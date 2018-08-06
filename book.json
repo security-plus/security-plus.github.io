@@ -1,0 +1,130 @@
+{
+  "title": "security-plus",
+  "author": "snowdreams1006",
+  "description": "security-plus 使用手册",
+  "language": "zh-hans",
+  "root": ".",
+  "plugins": [
+    "-lunr",
+    "-search",
+    "search-plus",
+    "-sharing",
+    "sharing-plus",
+    "editlink",
+    "expandable-chapters-small",
+    "splitter",
+    "github",
+    "github-buttons",
+    "alerts",
+    "anchor-navigation-ex",
+    "book-summary-scroll-position-saver",
+    "copy-code-button",
+    "donate",
+    "mermaid-gb3",
+    "puml",
+    "tbfed-pagefooter",
+    "terminal",
+    "versions-select"
+  ],
+  "pluginsConfig": {
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": true,
+      "hatenaBookmark": false,
+      "instapaper": false,
+      "line": true,
+      "linkedin": true,
+      "messenger": false,
+      "pocket": false,
+      "qq": false,
+      "qzone": true,
+      "stumbleupon": false,
+      "twitter": false,
+      "viber": false,
+      "vk": false,
+      "weibo": true,
+      "whatsapp": false,
+      "all": [
+        "facebook",
+        "google",
+        "twitter",
+        "weibo",
+        "instapaper",
+        "linkedin",
+        "pocket",
+        "stumbleupon"
+      ]
+    },
+    "editlink": {
+      "base": "https://github.com/security-plus/security-plus.github.io/blob/master/",
+      "label": "编辑本页",
+      "multilingual": false
+    },
+    "github": {
+      "url": "https://github.com/security-plus/security-plus.github.io"
+    },
+    "github-buttons": {
+      "buttons": [
+        {
+          "user": "security-plus",
+          "repo": "security-plus.github.io",
+          "type": "star",
+          "size": "large"
+        },
+        {
+          "user": "security-plus",
+          "type": "follow",
+          "width": "230",
+          "count": false
+        }
+      ]
+    },
+    "tbfed-pagefooter": {
+      "copyright": "Copyright &copy snowdreams1006 2018",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "expandable-chapters-small": {},
+    "donate": {
+      "wechat": "https://zhangjikai.com/resource/weixin.png",
+      "alipay": "https://zhangjikai.com/resource/alipay.png",
+      "title": "捐赠",
+      "button": "赏",
+      "alipayText": "支付宝打赏",
+      "wechatText": "微信打赏"
+    },
+    "anchor-navigation-ex": {
+      "showLevel": true,
+      "associatedWithSummary": true,
+      "printLog": false,
+      "multipleH1": true,
+      "mode": "float",
+      "float": {
+        "showLevelIcon": false,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      },
+      "pageTop": {
+        "showLevelIcon": false,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      }
+    },
+    "terminal": {
+      "copyButtons": true,
+      "fade": false,
+      "style": "flat"
+    },
+    "versions": {
+      "options": [
+        {
+          "value": "https://github.com/security-plus/security-plus.github.io",
+          "text": "v1.0.0"
+        }
+      ]
+    }
+  }
+}
