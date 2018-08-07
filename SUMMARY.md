@@ -2,9 +2,9 @@
 
 * [简介](README.md)
 * [快速入门](docs/use/README.md)
-    * [环境准备](docs/use/prepare.md)
+    * [搭建环境](docs/use/prepare.md)
     * [导入项目](docs/use/download.md)
-    * [体验项目](docs/use/experience.md)
+    * [运行项目](docs/use/experience.md)
 * [敏捷开发](docs/project/README.md)
     * [功能分析](docs/project/analysis.md)
     * [代码生成](docs/project/generate.md)

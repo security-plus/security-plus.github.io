@@ -14,7 +14,7 @@
 - **清晰的目录结构**：基于 `maven` 多模块项目,构建标准的 `spring-boot` 目录结构,有利于降低学习成本;
 - **良好的开发规范**：遵循[阿里巴巴java开发手册][Alibaba-Java-Coding-Guidelines]规范,完整的开发测试,提供高质量的软件产品服务;
 - **友好的代码注释**: 细致但不繁琐的注释让您阅读源码以及二次开发不再吃力,开发何苦为难开发;
-- **druid数据库监控** 随时随地查看数据库连接信息,方便 `dba` 监控并调优数据库 `sql`;
+- **druid数据库监控**: 随时随地查看数据库连接信息,方便 `dba` 监控并调优数据库 `sql`;
 - **swagger接口文档**: 自动生成 api 接口文档,方便调试开发,降低对接工作时的沟通成本;
 
 # 快速预览 | Preview
@@ -33,33 +33,33 @@
 ```
 security-plus 雪之梦后台权限管理系统
 
-├── security-plus-parent    父项目
-├── security-plus-core      核心项目
-└── security-plus-browser   浏览器项目
-    ├── log
-    ├── src/
-    |   ├── main/
+├── security-plus-parent    父项目: 负责维护父子项目关系,本身无任何代码
+├── security-plus-core      核心项目: 子项目,是基础模块,集成常用工具类
+└── security-plus-browser   浏览器项目: 子项目,是后端管理系统项目,依赖于核心项目
+    ├── log  
+    ├── src/ 
+    |   ├── main/ 
     |   |   ├── java/
     |   |   |   └── com.snowdreams1006.securityplus.browser/
-    |   |   |       ├── base/
-    |   |   |       ├── module/
-    |   |   |       └── SecurityPlusBrowserApplication
+    |   |   |       ├── base/              公共配置类以及常用工具类等
+    |   |   |       ├── module/            具体业务模块
+    |   |   |       └── SecurityPlusBrowserApplication  程序入口启动类
     |   |   └── resources/
-    |   |       ├── sql
-    |   |       ├── static/
-    |   |       ├── templates/
-    |   |       ├── application.yml
-    |   |       ├── application-dev.yml
-    |   |       ├── application-prod.yml
-    |   |       ├── application-test.yml
-    |   |       └── banner.txt
-    |   └── test/
+    |   |       ├── sql                     代码生成器产出 sql 以及程序初始化 sql 
+    |   |       ├── static/                 静态资源目录
+    |   |       ├── templates/              模板页面
+    |   |       ├── application.yml         总配置文件
+    |   |       ├── application-dev.yml     开发环境配置文件
+    |   |       ├── application-prod.yml    生产环境配置文件
+    |   |       ├── application-test.yml    测试环境配置文件
+    |   |       └── banner.txt              程序启动 banner
+    |   └── test/ 
     |       └── java/
     |           └── com.snowdreams1006.securityplus.browser/
     |               ├── base/
     |               └── module/
-    ├── target/
-    └── pom.xml
+    ├── target/ 
+    └── pom.xml 
 
 ```
 
@@ -78,14 +78,14 @@ security-plus 雪之梦后台权限管理系统
 
 # 本地部署 | Documentation
 
-1. 通过`git`下载源码
-2. 创建数据库`security-plus`，数据库编码为`UTF-8`,并执行`mysql.sql`文件,初始化数据;
-3. 修改`application-dev.yml`文件，更新`MySQL`账号和密码
-4. 在`security-plus`目录下，执行`mvn clean install`
+1. 下载 `security-plus` 源代码,并导入到 `Eclipse 或者 IDEA` 等 ide 开发工具;
+2. 创建 `security-plus` 数据库,执行 `mysql.sql` 文件,初始化基本数据;
+3. 修改 `application-*.yml` 配置文件，更新 `MySQL`连接信息以及其他配置;
+4. 在 `security-plus-parent` 项目下，执行 `mvn clean install` 下载安装相关依赖;
+5. 在 `security-plus-browser` 项目下,右键 `SecurityPlusBrowserApplication` 启动;
+6. `security-plus-browser` 项目的默认访问路径：[http://localhost:8080/index.page](http://localhost:8080/index.page "index.page")
 
-- Eclipse、IDEA运行`AdminApplication.java`，则可启动项目 `security-plus-browser`
-- `security-plus-browser`访问路径：http://localhost:8080/index.page
-- 账号密码：`admin/123456`
+> `SP` 默认账号密码: admin/123456
 
 # 文档 | Documentation
 
@@ -102,7 +102,7 @@ security-plus 雪之梦后台权限管理系统
 # 交流反馈 | Feedback
 
 - github 主页: [snowdreams1006][github-snowdreams1006]
-- 交流提问区: [][]
+- 交流提问区: [security-plus-issues][security-plus-issues]
 - 我的QQ号: [513238368][qq-513238368]
 
 # 捐赠 | Donate
@@ -135,13 +135,10 @@ security-plus 雪之梦后台权限管理系统
 > 欢迎各路好汉一起来参与完善 `security-plus`，我们期待你的PR！
 
 
-
-
 [security-plus]: https://github.com/security-plus "security-plus"
+[security-plus-issues]: https://github.com/security-plus/security-plus.github.io/issues "security-plus-issues"
 [security-plus.github.io]: https://github.com/security-plus/security-plus.github.io "security-plus.github.io"
 [github-snowdreams1006]: https://github.com/snowdreams1006 "github-snowdreams1006"
-[github-snowdreams1006-issues]: https://github.com/security-plus/security-plus.github.io/issues "github-snowdreams1006-issues"
-[github-snowdreams1006-issues]: https://github.com/security-plus/security-plus.github.io/releases "github-snowdreams1006-issues"
 [spring-boot]: http://spring.io/projects/spring-boot "spring-boot"
 [Mybatis-Plus]: http://mp.baomidou.com "Mybatis-Plus"
 [Apache Shiro™]: http://shiro.apache.org/ "Apache Shiro™"
@@ -152,7 +149,6 @@ security-plus 雪之梦后台权限管理系统
 [security-plus-demo]: https://github.com/security-plus/security-plus-demo "security-plus-demo"
 [zui56]: https://www.zui56.net "zui56"
 [qq-513238368]: http://wpa.qq.com/msgrd?v=3&uin=513238368&site=qq&menu=yes "qq-513238368"
-
 [preview]: ./static/image/preview.png "preview"
 [wechat]: ./static/image/weixin.png "wechat"
 [alipay]: ./static/image/alipay.png "alipay"
