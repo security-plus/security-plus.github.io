@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>功能分析 · security-plus</title>
+        <title>常规开发 · security-plus</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -98,7 +98,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="generate.html" />
+    <link rel="next" href="smart.html" />
     
     
     <link rel="prev" href="./" />
@@ -217,7 +217,7 @@
                 <a href="./">
             
                     
-                    敏捷开发
+                    实战演练
             
                 </a>
             
@@ -226,12 +226,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="analysis.html">
+        <li class="chapter active" data-level="1.3.1" data-path="normal.html">
             
-                <a href="analysis.html">
+                <a href="normal.html">
             
                     
-                    功能分析
+                    常规开发
             
                 </a>
             
@@ -239,38 +239,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="generate.html">
+        <li class="chapter " data-level="1.3.2" data-path="smart.html">
             
-                <a href="generate.html">
-            
-                    
-                    代码生成
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="custom.html">
-            
-                <a href="custom.html">
+                <a href="smart.html">
             
                     
-                    个性设置
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="test.html">
-            
-                <a href="test.html">
-            
-                    
-                    功能测试
+                    敏捷开发
             
                 </a>
             
@@ -869,7 +843,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >功能分析</a>
+        <a href="../.." >常规开发</a>
     </h1>
 </div>
 
@@ -884,9 +858,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x529F;&#x80FD;&#x5206;&#x6790;"><b>1. </b>&#x529F;&#x80FD;&#x5206;&#x6790;</a></li></ul></div><a href="#&#x529F;&#x80FD;&#x5206;&#x6790;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x529F;&#x80FD;&#x5206;&#x6790;"><a name="&#x529F;&#x80FD;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x529F;&#x80FD;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x529F;&#x80FD;&#x5206;&#x6790;</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x5E38;&#x89C4;&#x5F00;&#x53D1;"><b>1. </b>&#x5E38;&#x89C4;&#x5F00;&#x53D1;</a></li></ul></div><a href="#&#x5E38;&#x89C4;&#x5F00;&#x53D1;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x5E38;&#x89C4;&#x5F00;&#x53D1;"><a name="&#x5E38;&#x89C4;&#x5F00;&#x53D1;" class="anchor-navigation-ex-anchor" href="#&#x5E38;&#x89C4;&#x5F00;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x5E38;&#x89C4;&#x5F00;&#x53D1;</h1>
+<p>&#x5F00;&#x53D1;&#x6D41;&#x7A0B;: &#x540E;&#x7AEF;&#x4EE3;&#x7801; -&gt; &#x524D;&#x7AEF;&#x9875;&#x9762; -&gt; &#x5206;&#x914D;&#x6743;&#x9650; -&gt; &#x5F00;&#x53D1;&#x5B8C;&#x6210;</p>
+<p>&#x4E0B;&#x9762;&#x4EE5; <code>&#x8F66;&#x8F86;&#x7C7B;&#x578B;</code> &#x4E3A;&#x4F8B;,&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x8FDB;&#x884C; <code>&#x589E;&#x5220;&#x6539;&#x67E5;</code> &#x7B80;&#x5355;&#x4E1A;&#x52A1;,&#x6548;&#x679C;&#x5982;&#x56FE;</p>
+<p><img src="../../static/image/normal-preview.png" alt="&#x6700;&#x7EC8;&#x6548;&#x679C;&#x9884;&#x89C8;" title="normal-preview"></p>
+<h3 id="&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x8868;"><a name="&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x8868;" class="anchor-navigation-ex-anchor" href="#&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x8868;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x8868;</h3>
+<p><img src="../../static/image/normal-mysql-1.png" alt="&#x6570;&#x636E;&#x8868;&#x7ED3;&#x6784;" title="normal-mysql-1"></p>
+<pre><code class="lang-mysql">CREATE TABLE `sys_vehicle_type` (
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id&apos;,
+  `parent_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x76F4;&#x63A5;&#x4E0A;&#x7EA7;id,0&#x8868;&#x793A;&#x65E0;&#x4E0A;&#x7EA7;&apos;,
+  `level` varchar(255) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x5C42;&#x7EA7;&apos;,
+  `num` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x5E8F;&#x53F7;&apos;,
+  `type` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x7C7B;&#x578B;:1&#x8868;&#x793A;&#x7275;&#x5F15;&#x8F66;,2&#x8868;&#x793A;&#x534A;&#x6302;&#x8F66;,3&#x8868;&#x793A;&#x5168;&#x6302;&#x8F66;&apos;,
+  `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x540D;&#x79F0;&apos;,
+  `remark` varchar(255) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x5907;&#x6CE8;&apos;,
+  `state` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x72B6;&#x6001;,1&#x542F;&#x7528;&#x4E2D;,2&#x5DF2;&#x51BB;&#x7ED3;,3&#x5DF2;&#x5220;&#x9664;&apos;,
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x903B;&#x8F91;&#x5220;&#x9664;&#x914D;&#x7F6E;,1&#x8868;&#x793A;&#x5220;&#x9664;,0&#x8868;&#x793A;&#x672A;&#x5220;&#x9664;&apos;,
+  `version` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x4E50;&#x89C2;&#x9501;&#x6807;&#x5FD7;&#x4F4D;&apos;,
+  `owner_enterprise_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x6240;&#x6709;&#x8005;&#x4F01;&#x4E1A; id&apos;,
+  `owner_enterprise_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x6240;&#x6709;&#x8005;&#x4F01;&#x4E1A;&#x540D;&#x79F0;&apos;,
+  `owner_user_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x6240;&#x6709;&#x8005;&#x7528;&#x6237; id&apos;,
+  `owner_user_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x6240;&#x6709;&#x8005;&#x7528;&#x6237;&#x540D;&#x79F0;&apos;,
+  `create_enterprise_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x521B;&#x5EFA;&#x4F01;&#x4E1A; id&apos;,
+  `create_enterprise_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x521B;&#x5EFA;&#x4F01;&#x4E1A;&#x540D;&#x79F0;&apos;,
+  `modified_enterprise_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x66F4;&#x65B0;&#x4F01;&#x4E1A; id&apos;,
+  `modified_enterprise_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x66F4;&#x65B0;&#x4F01;&#x4E1A;&#x540D;&#x79F0;&apos;,
+  `create_user_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x521B;&#x5EFA;&#x7528;&#x6237; id&apos;,
+  `create_user_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x521B;&#x5EFA;&#x7528;&#x6237;&#x540D;&#x79F0;&apos;,
+  `modified_user_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x66F4;&#x65B0;&#x7528;&#x6237; id&apos;,
+  `modified_user_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x66F4;&#x65B0;&#x4F01;&#x4E1A;&#x540D;&#x79F0;&apos;,
+  `tenant_id` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x79DF;&#x6237; id\n&apos;,
+  `tenant_type` bigint(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x79DF;&#x6237;&#x7C7B;&#x578B;,1&#x8868;&#x793A;&#x4F01;&#x4E1A;&#x79DF;&#x6237;,2&#x8868;&#x793A;&#x4E2A;&#x4EBA;&#x79DF;&#x6237;\n&apos;,
+  `tenant_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;&#x79DF;&#x6237;&#x540D;&#x79F0;&apos;,
+  `gmt_create` datetime DEFAULT NULL COMMENT &apos;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&apos;,
+  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&apos;,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8 COMMENT=&apos;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x8868;&apos;;
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; snowdreams1006 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2018-08-06 21:21:51
+2018-08-07 20:55:20
 </span></footer>
                                 
                                 </section>
@@ -914,12 +925,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 敏捷开发">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 实战演练">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="generate.html" class="navigation navigation-next " aria-label="Next page: 代码生成">
+                <a href="smart.html" class="navigation navigation-next " aria-label="Next page: 敏捷开发">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -930,7 +941,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"功能分析","level":"1.3.1","depth":2,"next":{"title":"代码生成","level":"1.3.2","depth":2,"path":"docs/project/generate.md","ref":"docs/project/generate.md","articles":[]},"previous":{"title":"敏捷开发","level":"1.3","depth":1,"path":"docs/project/README.md","ref":"docs/project/README.md","articles":[{"title":"功能分析","level":"1.3.1","depth":2,"path":"docs/project/analysis.md","ref":"docs/project/analysis.md","articles":[]},{"title":"代码生成","level":"1.3.2","depth":2,"path":"docs/project/generate.md","ref":"docs/project/generate.md","articles":[]},{"title":"个性设置","level":"1.3.3","depth":2,"path":"docs/project/custom.md","ref":"docs/project/custom.md","articles":[]},{"title":"功能测试","level":"1.3.4","depth":2,"path":"docs/project/test.md","ref":"docs/project/test.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://zhangjikai.com/resource/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://zhangjikai.com/resource/weixin.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/project/analysis.md","mtime":"2018-08-06T13:21:51.383Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T09:38:30.214Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常规开发","level":"1.3.1","depth":2,"next":{"title":"敏捷开发","level":"1.3.2","depth":2,"path":"docs/practice/smart.md","ref":"docs/practice/smart.md","articles":[]},"previous":{"title":"实战演练","level":"1.3","depth":1,"path":"docs/practice/README.md","ref":"docs/practice/README.md","articles":[{"title":"常规开发","level":"1.3.1","depth":2,"path":"docs/practice/normal.md","ref":"docs/practice/normal.md","articles":[]},{"title":"敏捷开发","level":"1.3.2","depth":2,"path":"docs/practice/smart.md","ref":"docs/practice/smart.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://zhangjikai.com/resource/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://zhangjikai.com/resource/weixin.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/practice/normal.md","mtime":"2018-08-07T12:55:20.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T12:55:39.382Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
