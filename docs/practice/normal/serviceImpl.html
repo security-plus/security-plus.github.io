@@ -1,0 +1,1873 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>serviceImpl · security-plus</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="snowdreams1006">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-terminal/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="serviceImplTest.html" />
+    
+    
+    <link rel="prev" href="service.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../use/">
+            
+                <a href="../../use/">
+            
+                    
+                    快速入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../use/prepare.html">
+            
+                <a href="../../use/prepare.html">
+            
+                    
+                    搭建环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../use/download.html">
+            
+                <a href="../../use/download.html">
+            
+                    
+                    导入项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../use/experience.html">
+            
+                <a href="../../use/experience.html">
+            
+                    
+                    运行项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    实战演练
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../normal.html">
+            
+                <a href="../normal.html">
+            
+                    
+                    常规开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="db.html">
+            
+                <a href="db.html">
+            
+                    
+                    db
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="entity.html">
+            
+                <a href="entity.html">
+            
+                    
+                    entity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="param.html">
+            
+                <a href="param.html">
+            
+                    
+                    param
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="query.html">
+            
+                <a href="query.html">
+            
+                    
+                    query
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="dto.html">
+            
+                <a href="dto.html">
+            
+                    
+                    dto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="mapper.html">
+            
+                <a href="mapper.html">
+            
+                    
+                    mapper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.7" data-path="xml.html">
+            
+                <a href="xml.html">
+            
+                    
+                    xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.8" data-path="mapperTest.html">
+            
+                <a href="mapperTest.html">
+            
+                    
+                    mapperTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.9" data-path="entityTest.html">
+            
+                <a href="entityTest.html">
+            
+                    
+                    entityTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.10" data-path="service.html">
+            
+                <a href="service.html">
+            
+                    
+                    service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.11" data-path="serviceImpl.html">
+            
+                <a href="serviceImpl.html">
+            
+                    
+                    serviceImpl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.12" data-path="serviceImplTest.html">
+            
+                <a href="serviceImplTest.html">
+            
+                    
+                    serviceImplTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.13" data-path="controller.html">
+            
+                <a href="controller.html">
+            
+                    
+                    controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.14" data-path="controllerTest.html">
+            
+                <a href="controllerTest.html">
+            
+                    
+                    controllerTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.15" data-path="indexPage.html">
+            
+                <a href="indexPage.html">
+            
+                    
+                    indexPage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.16" data-path="indexJs.html">
+            
+                <a href="indexJs.html">
+            
+                    
+                    indexJs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.17" data-path="updatePage.html">
+            
+                <a href="updatePage.html">
+            
+                    
+                    updatePage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.18" data-path="updateJs.html">
+            
+                <a href="updateJs.html">
+            
+                    
+                    updateJs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.19" data-path="addPage.html">
+            
+                <a href="addPage.html">
+            
+                    
+                    addPage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.20" data-path="addJs.html">
+            
+                <a href="addJs.html">
+            
+                    
+                    addJs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../smart.html">
+            
+                <a href="../smart.html">
+            
+                    
+                    敏捷开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../rule/">
+            
+                <a href="../../rule/">
+            
+                    
+                    开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../rule/module.html">
+            
+                <a href="../../rule/module.html">
+            
+                    
+                    模块规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../rule/project.html">
+            
+                <a href="../../rule/project.html">
+            
+                    
+                    工程规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../rule/domain.html">
+            
+                <a href="../../rule/domain.html">
+            
+                    
+                    领域规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../rule/test.html">
+            
+                <a href="../../rule/test.html">
+            
+                    
+                    测试规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../rule/api.html">
+            
+                <a href="../../rule/api.html">
+            
+                    
+                    接口规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../advance.README.html">
+            
+                <a href="../../advance.README.html">
+            
+                    
+                    开始进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../advance/access.html">
+            
+                <a href="../../advance/access.html">
+            
+                    
+                    功能权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../advance/data.html">
+            
+                <a href="../../advance/data.html">
+            
+                    
+                    数据权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../advance/server.html">
+            
+                <a href="../../advance/server.html">
+            
+                    
+                    后端用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../advance/client.html">
+            
+                <a href="../../advance/client.html">
+            
+                    
+                    前端用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../advance/custom.html">
+            
+                <a href="../../advance/custom.html">
+            
+                    
+                    高级用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../advance/paging.html">
+            
+                <a href="../../advance/paging.html">
+            
+                    
+                    分页插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../advance/optimistic.html">
+            
+                <a href="../../advance/optimistic.html">
+            
+                    
+                    乐观锁插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../../advance/autofill.html">
+            
+                <a href="../../advance/autofill.html">
+            
+                    
+                    公共字段自动填充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../../advance/logic.html">
+            
+                <a href="../../advance/logic.html">
+            
+                    
+                    逻辑删除
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../../advance/tenant.html">
+            
+                <a href="../../advance/tenant.html">
+            
+                    
+                    多租户解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../reading/">
+            
+                <a href="../../reading/">
+            
+                    
+                    进阶阅读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../reading/maven.html">
+            
+                <a href="../../reading/maven.html">
+            
+                    
+                    maven 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../reading/springboot.html">
+            
+                <a href="../../reading/springboot.html">
+            
+                    
+                    springboot 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../reading/shiro.html">
+            
+                <a href="../../reading/shiro.html">
+            
+                    
+                    shiro 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../reading/mybaits-plus.html">
+            
+                <a href="../../reading/mybaits-plus.html">
+            
+                    
+                    mybaits-plus 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../reading/ibeetl.html">
+            
+                <a href="../../reading/ibeetl.html">
+            
+                    
+                    ibeetl 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../reading/hplus.html">
+            
+                <a href="../../reading/hplus.html">
+            
+                    
+                    h+ 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../reading/svn.html">
+            
+                <a href="../../reading/svn.html">
+            
+                    
+                    svn 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../reading/git.html">
+            
+                <a href="../../reading/git.html">
+            
+                    
+                    git 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../custom/">
+            
+                <a href="../../custom/">
+            
+                    
+                    高级配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../custom/project.html">
+            
+                <a href="../../custom/project.html">
+            
+                    
+                    项目配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../custom/access.html">
+            
+                <a href="../../custom/access.html">
+            
+                    
+                    权限配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../custom/client.html">
+            
+                <a href="../../custom/client.html">
+            
+                    
+                    前端配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../custom/template.html">
+            
+                <a href="../../custom/template.html">
+            
+                    
+                    模板配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../mind/">
+            
+                <a href="../../mind/">
+            
+                    
+                    设计思想
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../mind/module.html">
+            
+                <a href="../../mind/module.html">
+            
+                    
+                    模块划分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../mind/access.html">
+            
+                <a href="../../mind/access.html">
+            
+                    
+                    功能权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../mind/data.html">
+            
+                <a href="../../mind/data.html">
+            
+                    
+                    数据权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../issue/">
+            
+                <a href="../../issue/">
+            
+                    
+                    常见问题FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../other.README.html">
+            
+                <a href="../../other.README.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../oter.contact.html">
+            
+                <a href="../../oter.contact.html">
+            
+                    
+                    联系作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../other.donate.html">
+            
+                <a href="../../other.donate.html">
+            
+                    
+                    捐赠支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../other/log.html">
+            
+                <a href="../../other/log.html">
+            
+                    
+                    更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >serviceImpl</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#serviceimpl"><b>1. </b>serviceImpl</a></li></ul></div><a href="#serviceimpl" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="serviceimpl"><a name="serviceimpl" class="anchor-navigation-ex-anchor" href="#serviceimpl"><i class="fa fa-link" aria-hidden="true"></i></a>1. serviceImpl</h1>
+<ul>
+<li><code>serviceImpl</code> &#x7EE7;&#x627F;&#x7EDF;&#x4E00;&#x57FA;&#x7C7B; <code>ServiceImpl</code> ,&#x53EF;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x91CD;&#x5199;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;;</li>
+<li>&#x7C7B;&#x540D;&#xFF1A;<code>I+(&#x5927;&#x9A7C;&#x5CF0;&#x547D;&#x540D;)+Service</code> &#x89C4;&#x8303;,&#x9ED8;&#x8BA4;&#x6CE8;&#x91CA;&#x540C;&#x6570;&#x636E;&#x8868;&#x6CE8;&#x91CA;,&#x5E76;&#x52A0;&#x4E0A;<code>@Service</code>&#x7B49;&#x6CE8;&#x89E3;&#x8BF4;&#x660E;;</li>
+<li>&#x65B9;&#x6CD5;&#x540D;: &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x7684;&#x65B9;&#x6CD5; <code>public</code>,&#x5426;&#x5219; <code>private</code>,&#x5C3D;&#x91CF;&#x4E0D;&#x8981; <code>protected</code>;</li>
+</ul>
+<ol>
+<li><p>&#x627E;&#x5230; <code>SysRoleServiceImpl</code> &#x89D2;&#x8272; <code>serviceImpl</code> &#x5B9E;&#x73B0;&#x7C7B;,&#x5E76;&#x590D;&#x5236;&#x91CD;&#x547D;&#x540D;&#x4E3A; <code>SysVehicleTypeServiceImpl</code>,&#x540C;&#x65F6;&#x6253;&#x5F00;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;,&#x65B9;&#x4FBF;&#x7F16;&#x8F91;;
+<img src="../../../static/image/sysVehicleTypeServiceImpl-split.png" alt="sysVehicleTypeServiceImpl-split" title="sysVehicleTypeServiceImpl-split"></p>
+</li>
+<li><p>&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;,&#x7F16;&#x5199; <code>SysVehicleTypeServiceImpl</code> &#x6587;&#x4EF6;;
+<img src="../../../static/image/sysVehicleTypeServiceImpl.png" alt="sysVehicleTypeServiceImpl" title="sysVehicleTypeServiceImpl"></p>
+</li>
+</ol>
+<p>SysVehicleTypeServiceImpl</p>
+<pre><code>package com.snowdreams1006.securityplus.browser.module.system.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
+import com.snowdreams1006.securityplus.browser.base.tools.LevelTools;
+import com.snowdreams1006.securityplus.browser.base.tools.PageTools;
+import com.snowdreams1006.securityplus.browser.base.tools.ShiroTools;
+import com.snowdreams1006.securityplus.browser.module.system.dto.SysUserDto;
+import com.snowdreams1006.securityplus.browser.module.system.dto.SysVehicleTypeDto;
+import com.snowdreams1006.securityplus.browser.module.system.entity.SysVehicleType;
+import com.snowdreams1006.securityplus.browser.module.system.mapper.SysVehicleTypeMapper;
+import com.snowdreams1006.securityplus.browser.module.system.param.SysVehicleTypeParam;
+import com.snowdreams1006.securityplus.browser.module.system.query.SysVehicleTypeQuery;
+import com.snowdreams1006.securityplus.browser.module.system.service.ISysVehicleTypeService;
+import com.snowdreams1006.securityplus.core.tools.ValidatorTools;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.time.DateUtils;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * &#x7CFB;&#x7EDF;&#x7CFB;&#x522B;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x8868; serviceImpl
+ *
+ * @author snowdreams1006
+ * @date 2018-05-17
+ */
+@Service
+public class SysVehicleTypeServiceImpl extends ServiceImpl&lt;SysVehicleTypeMapper, SysVehicleType&gt; implements ISysVehicleTypeService {
+
+    @Resource
+    private SysVehicleTypeMapper sysVehicleTypeMapper;
+
+    @Override
+    public SysVehicleTypeDto getSyncTree(SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x5904;&#x7406;&#x516C;&#x5171;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+        this.handleCommonQuery(sysVehicleTypeQuery);
+
+        //&#x6839;&#x636E;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x83B7;&#x53D6;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        SysVehicleTypeDto parent = this.getParentByQuery(sysVehicleTypeQuery);
+        if (Objects.isNull(parent)) {
+            return null;
+        }
+
+        //&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleTypeDto&gt; children = Lists.newArrayList();
+
+        //&#x67E5;&#x8BE2;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x5E73;&#x884C;&#x5217;&#x8868;)
+        List&lt;SysVehicleType&gt; sysVehicleTypeList = sysVehicleTypeMapper.listDescendant(parent, sysVehicleTypeQuery);
+        if (CollectionUtils.isNotEmpty(sysVehicleTypeList)) {
+            //entity&#x5217;&#x8868; &#x9002;&#x914D;&#x6210; dto&#x5217;&#x8868;
+            List&lt;SysVehicleTypeDto&gt; descendant = this.entityListAdaptDtoList(sysVehicleTypeList, sysVehicleTypeQuery);
+
+            //&#x5E73;&#x884C;&#x5217;&#x8868; &#x9002;&#x914D;&#x6210; &#x9012;&#x5F52;&#x5217;&#x8868;
+            children = this.parallelList2recursiveList(parent, descendant);
+        }
+
+        //&#x5EFA;&#x7ACB;&#x7236;&#x5B50;&#x8282;&#x70B9;&#x5173;&#x8054;
+        parent.setChildren(children);
+
+        return parent;
+    }
+
+    @Override
+    public List&lt;SysVehicleTypeDto&gt; listAsyncTree(SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x5904;&#x7406;&#x516C;&#x5171;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+        this.handleCommonQuery(sysVehicleTypeQuery);
+
+        //&#x6839;&#x636E;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x83B7;&#x53D6;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        SysVehicleTypeDto parent = this.getParentByQuery(sysVehicleTypeQuery);
+        if (Objects.isNull(parent)) {
+            return null;
+        }
+
+        //&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleTypeDto&gt; children = Lists.newArrayList();
+
+        //&#x67E5;&#x8BE2;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleType&gt; sysVehicleTypeList = sysVehicleTypeMapper.listChildren(parent, sysVehicleTypeQuery);
+        if (CollectionUtils.isNotEmpty(sysVehicleTypeList)) {
+            //entity&#x5217;&#x8868; &#x9002;&#x914D;&#x6210; dto&#x5217;&#x8868;
+            children = this.entityListAdaptDtoList(sysVehicleTypeList, sysVehicleTypeQuery);
+        }
+
+        return children;
+    }
+
+    @Override
+    public Page&lt;SysVehicleTypeDto&gt; listPage(Page&lt;SysVehicleTypeDto&gt; page, SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x9ED8;&#x8BA4;&#x5206;&#x9875;
+        if (Objects.isNull(page)) {
+            page = new PageTools&lt;SysVehicleTypeDto&gt;().defaultPage();
+        }
+
+        //&#x5904;&#x7406;&#x516C;&#x5171;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+        this.handleCommonQuery(sysVehicleTypeQuery);
+
+        //&#x6839;&#x636E;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x83B7;&#x53D6;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        SysVehicleTypeDto parent = this.getParentByQuery(sysVehicleTypeQuery);
+        if (Objects.isNull(parent)) {
+            return null;
+        }
+
+        //&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleTypeDto&gt; records = Lists.newArrayList();
+
+        //&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleType&gt; sysVehicleTypeList = sysVehicleTypeMapper.listPage(page, parent, sysVehicleTypeQuery);
+        if (CollectionUtils.isNotEmpty(sysVehicleTypeList)) {
+            //entity&#x5217;&#x8868; &#x9002;&#x914D;&#x6210; dto&#x5217;&#x8868;
+            records = this.entityListAdaptDtoList(sysVehicleTypeList, sysVehicleTypeQuery);
+        }
+
+        //&#x6784;&#x9020;&#x5206;&#x9875;&#x4FE1;&#x606F;
+        page.setRecords(records);
+
+        return page;
+    }
+
+    @Override
+    public List&lt;SysVehicleTypeDto&gt; listCondition(SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x5904;&#x7406;&#x516C;&#x5171;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+        this.handleCommonQuery(sysVehicleTypeQuery);
+
+        //&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x5217;&#x8868;
+        List&lt;SysVehicleTypeDto&gt; results = Lists.newArrayList();
+
+        //&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        List&lt;SysVehicleType&gt; sysVehicleTypeList = sysVehicleTypeMapper.listCondition(sysVehicleTypeQuery);
+        if (CollectionUtils.isNotEmpty(sysVehicleTypeList)) {
+            //entity&#x5217;&#x8868; &#x9002;&#x914D;&#x6210; dto&#x5217;&#x8868;
+            results = this.entityListAdaptDtoList(sysVehicleTypeList, sysVehicleTypeQuery);
+        }
+
+        return results;
+    }
+
+    @Override
+    public SysVehicleTypeDto getOne(Long id) {
+        //&#x57FA;&#x672C;&#x6570;&#x636E;&#x9A8C;&#x8BC1;
+        Preconditions.checkNotNull(id, &quot;&#x5F85;&#x67E5;&#x8BE2;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[null]&#x4E0D;&#x5B58;&#x5728;&quot;);
+
+        //&#x7CBE;&#x786E;&#x67E5;&#x8BE2;
+        SysVehicleType sysVehicleType = sysVehicleTypeMapper.selectById(id);
+
+        //&#x6570;&#x636E;&#x4E0D;&#x5B58;&#x5728;,&#x8FD4;&#x56DE; null, &#x5177;&#x4F53;&#x903B;&#x8F91;&#x7531;&#x8C03;&#x7528;&#x8005;&#x5904;&#x7406;
+        if (Objects.isNull(sysVehicleType)) {
+            return null;
+        }
+
+        return this.entityAdaptDto(sysVehicleType);
+    }
+
+    @Override
+    public SysVehicleTypeDto addOne(SysVehicleTypeParam sysVehicleTypeParam) {
+        //&#x57FA;&#x672C;&#x6570;&#x636E;&#x9A8C;&#x8BC1;
+        ValidatorTools.check(sysVehicleTypeParam);
+
+        //&#x8C03;&#x6574;&#x53C2;&#x6570;
+        adjustParam(sysVehicleTypeParam);
+
+        //&#x552F;&#x4E00;&#x6027;&#x6821;&#x9A8C;
+        if (checkExist(sysVehicleTypeParam.getParentId(), sysVehicleTypeParam.getId(), sysVehicleTypeParam.getName())) {
+            throw new IllegalArgumentException(String.format(&quot;&#x540C;&#x4E00;&#x5C42;&#x7EA7;&#x4E0B;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5DF2;&#x5B58;&#x5728;&quot;, sysVehicleTypeParam.getName()));
+        }
+
+        //param &#x9002;&#x914D;&#x6210; entity
+        SysVehicleType sysVehicleType = Preconditions.checkNotNull(SysVehicleTypeDto.paramAdaptEntity(sysVehicleTypeParam));
+        sysVehicleType.setLevel(LevelTools.calculateLevel(this.getLevel(sysVehicleType.getParentId()), sysVehicleType.getParentId()));
+
+        //&#x65B0;&#x589E;
+        sysVehicleTypeMapper.insert(sysVehicleType);
+
+        return this.getOne(sysVehicleType.getId());
+    }
+
+    @Override
+    public SysVehicleTypeDto updateOne(SysVehicleTypeParam sysVehicleTypeParam) {
+        //&#x57FA;&#x672C;&#x6570;&#x636E;&#x9A8C;&#x8BC1;
+        ValidatorTools.check(sysVehicleTypeParam);
+        Preconditions.checkNotNull(sysVehicleTypeParam.getId(), String.format(&quot;&#x5F85;&#x66F4;&#x65B0;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[%s]&#x4E0D;&#x5B58;&#x5728;&quot;, sysVehicleTypeParam.getName()));
+
+        //&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x9A8C;&#x8BC1;
+        SysVehicleTypeDto beforeDto = Preconditions.checkNotNull(this.getOne(sysVehicleTypeParam.getId()));
+        Preconditions.checkNotNull(beforeDto, String.format(&quot;&#x5F85;&#x66F4;&#x65B0;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x4E0D;&#x5B58;&#x5728;&quot;, beforeDto.getName()));
+
+        //dto &#x9002;&#x914D;&#x6210; entity
+        SysVehicleType before = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptEntity(beforeDto));
+
+        //&#x8C03;&#x6574;&#x66F4;&#x65B0;&#x53C2;&#x6570;
+        adjustParam(sysVehicleTypeParam);
+
+        //&#x552F;&#x4E00;&#x6027;&#x6821;&#x9A8C;
+        if (checkExist(sysVehicleTypeParam.getParentId(), sysVehicleTypeParam.getId(), sysVehicleTypeParam.getName())) {
+            throw new IllegalArgumentException(String.format(&quot;&#x540C;&#x4E00;&#x5C42;&#x7EA7;&#x4E0B;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5DF2;&#x5B58;&#x5728;&quot;, sysVehicleTypeParam.getName()));
+        }
+
+        //param &#x9002;&#x914D;&#x6210; entity
+        SysVehicleType after = Preconditions.checkNotNull(SysVehicleTypeDto.paramAdaptEntity(sysVehicleTypeParam));
+        after.setLevel(LevelTools.calculateLevel(this.getLevel(after.getParentId()), after.getParentId()));
+
+        //&#x540C;&#x6B65;&#x81EA;&#x52A8;&#x65B0;&#x589E;&#x5B57;&#x6BB5;
+        syncInsertFillFiled(before, after);
+
+        //&#x66F4;&#x65B0;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        this.updateDescendant(before, after);
+
+        return this.getOne(after.getId());
+    }
+
+    @Override
+    public void deleteOne(Long id) {
+        //&#x57FA;&#x672C;&#x6570;&#x636E;&#x9A8C;&#x8BC1;
+        Preconditions.checkNotNull(id, &quot;&#x5F85;&#x5220;&#x9664;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[null]&#x4E0D;&#x5B58;&#x5728;&quot;);
+
+        //&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x9A8C;&#x8BC1;
+        SysVehicleTypeDto sysVehicleTypeDto = this.getOne(id);
+        Preconditions.checkNotNull(sysVehicleTypeDto, String.format(&quot;&#x5F85;&#x5220;&#x9664;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[%s]&#x4E0D;&#x5B58;&#x5728;&quot;, id));
+
+        //&#x5F53;&#x524D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5B58;&#x5728;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        if (sysVehicleTypeMapper.countChildren(sysVehicleTypeDto, null) &gt; 0) {
+            throw new IllegalArgumentException(String.format(&quot;&#x5F85;&#x5220;&#x9664;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5B58;&#x5728;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;, sysVehicleTypeDto.getName()));
+        }
+
+        sysVehicleTypeMapper.deleteById(id);
+    }
+
+    /**
+     * &#x5904;&#x7406;&#x516C;&#x5171;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+     *
+     * @param sysVehicleTypeQuery &#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+     */
+    private void handleCommonQuery(SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x4FEE;&#x6B63;&#x67E5;&#x8BE2;&#x65E5;&#x671F;: yyyy-MM-dd &#x89E3;&#x6790;&#x6210; Date &#x7C7B;&#x578B;&#x662F;&#x5F53;&#x65E5;&#x96F6;&#x70B9;,&#x56E0;&#x6B64;&#x7ED3;&#x675F;&#x65E5;&#x671F;&#x624B;&#x52A8;&#x63A8;&#x8FDF;&#x4E00;&#x5929;
+        if (Objects.nonNull(sysVehicleTypeQuery)) {
+            Date startDate = sysVehicleTypeQuery.getStartDate();
+            Date endDate = sysVehicleTypeQuery.getEndDate();
+
+            //&#x4E0D;&#x5B58;&#x5728;&#x5F00;&#x59CB;&#x65E5;&#x671F;,&#x5219;&#x65E5;&#x671F;&#x67E5;&#x8BE2;&#x65E0;&#x6548;,&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#x7ED3;&#x675F;&#x65E5;&#x671F;,&#x5219;&#x9ED8;&#x8BA4;&#x5F53;&#x524D;&#x65E5;&#x671F;
+            if (Objects.nonNull(startDate)) {
+                if (Objects.nonNull(endDate)) {
+                    endDate = DateUtils.addDays(endDate, 1);
+                } else {
+                    endDate = new Date();
+                }
+                sysVehicleTypeQuery.setEndDate(endDate);
+            }
+        }
+    }
+
+    /**
+     * &#x6839;&#x636E;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x83B7;&#x53D6;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+     *
+     * @param sysVehicleTypeQuery &#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;
+     * @return &#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+     */
+    private SysVehicleTypeDto getParentByQuery(SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x9ED8;&#x8BA4;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x662F;&#x6839;&#x8282;&#x70B9;,level = &quot;0&quot;
+        SysVehicleTypeDto parent = SysVehicleTypeDto.createRoot();
+
+        //&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x662F;&#x666E;&#x901A;&#x8282;&#x70B9;
+        if (Objects.nonNull(sysVehicleTypeQuery)) {
+            Long id = sysVehicleTypeQuery.getId();
+            boolean normalParentFlag = Objects.nonNull(id) &amp;&amp; !Objects.equals(Long.valueOf(LevelTools.ROOT_LEVEL), id);
+            if (normalParentFlag) {
+                parent = this.getOne(id);
+            }
+        }
+
+        return parent;
+    }
+
+    /**
+     * &#x8F66;&#x8F86;&#x7C7B;&#x578B;entity&#x9002;&#x914D;&#x6210;&#x8F66;&#x8F86;&#x7C7B;&#x578B;dto
+     *
+     * @param sysVehicleType &#x8F66;&#x8F86;&#x7C7B;&#x578B;entity
+     * @return &#x8F66;&#x8F86;&#x7C7B;&#x578B;dto
+     */
+    private SysVehicleTypeDto entityAdaptDto(SysVehicleType sysVehicleType) {
+        //&#x53C2;&#x6570; null, &#x5219;&#x8FD4;&#x56DE; null, &#x5177;&#x4F53;&#x903B;&#x8F91;&#x7531;&#x8C03;&#x7528;&#x8005;&#x5904;&#x7406;
+        if (Objects.isNull(sysVehicleType)) {
+            return null;
+        }
+
+        //entity&#x9759;&#x6001;&#x6570;&#x636E;&#x6D45;&#x62F7;&#x8D1D;
+        SysVehicleTypeDto sysVehicleTypeDto = Preconditions.checkNotNull(SysVehicleTypeDto.entityAdaptDto(sysVehicleType));
+
+        //dto&#x52A8;&#x6001;&#x6570;&#x636E;&#x5728;&#x7EBF;&#x751F;&#x6210;
+        sysVehicleTypeDto.setIsRoot(false);
+        Boolean isParent = sysVehicleTypeMapper.countChildren(sysVehicleTypeDto, null) &gt; 0;
+        sysVehicleTypeDto.setIsParent(isParent);
+
+        return sysVehicleTypeDto;
+    }
+
+    /**
+     * &#x8F66;&#x8F86;&#x7C7B;&#x578B;entity&#x5217;&#x8868;&#x9002;&#x914D;&#x6210;&#x8F66;&#x8F86;&#x7C7B;&#x578B;dto&#x5217;&#x8868;
+     *
+     * @param sysVehicleTypeList &#x8F66;&#x8F86;&#x7C7B;&#x578B;entity&#x5217;&#x8868;
+     * @return &#x8F66;&#x8F86;&#x7C7B;&#x578B;dto&#x5217;&#x8868;
+     */
+    private List&lt;SysVehicleTypeDto&gt; entityListAdaptDtoList(List&lt;SysVehicleType&gt; sysVehicleTypeList, SysVehicleTypeQuery sysVehicleTypeQuery) {
+        //&#x6700;&#x7EC8;&#x8F93;&#x51FA;dto&#x7ED3;&#x679C;&#x5217;&#x8868;
+        List&lt;SysVehicleTypeDto&gt; sysVehicleTypeDtoList = Lists.newArrayList();
+
+        //&#x96C6;&#x5408;&#x4E3A;&#x7A7A;,&#x5219;&#x8FD4;&#x56DE;&#x7A7A;&#x96C6;&#x5408;
+        if (CollectionUtils.isEmpty(sysVehicleTypeList)) {
+            return sysVehicleTypeDtoList;
+        }
+
+        //&#x5C06;&#x7CFB;&#x7EDF;&#x6743;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x9002;&#x914D;&#x6210;&#x8F66;&#x8F86;&#x7C7B;&#x578B;dto
+        for (SysVehicleType sysVehicleType : sysVehicleTypeList) {
+            //entity&#x9759;&#x6001;&#x6570;&#x636E;&#x6D45;&#x62F7;&#x8D1D;
+            SysVehicleTypeDto sysVehicleTypeDto = Preconditions.checkNotNull(SysVehicleTypeDto.entityAdaptDto(sysVehicleType));
+
+            //dto&#x52A8;&#x6001;&#x6570;&#x636E;&#x5728;&#x7EBF;&#x751F;&#x6210;
+            sysVehicleTypeDto.setIsRoot(false);
+
+            //&#x67E5;&#x8BE2;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7EDF;&#x8BA1;&#x503C;
+            Integer allChildCount = sysVehicleTypeMapper.countChildren(sysVehicleTypeDto, sysVehicleTypeQuery);
+            sysVehicleTypeDto.setIsParent(allChildCount &gt; 0);
+
+            //entity &#x8F6C;&#x6210; dto
+            sysVehicleTypeDtoList.add(sysVehicleTypeDto);
+        }
+
+        return sysVehicleTypeDtoList;
+    }
+
+    /**
+     * &#x6839;&#x636E;&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x53CA;&#x5176;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x6E32;&#x67D3;&#x6210;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x6811;&#x5217;&#x8868;
+     *
+     * @param parent         &#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+     * @param sysVehicleTypeDtoList &#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x5E73;&#x884C;&#x7ED3;&#x6784;)
+     * @return &#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x6811;&#x5217;&#x8868;(&#x9012;&#x5F52;&#x7ED3;&#x6784;)
+     */
+    private List&lt;SysVehicleTypeDto&gt; parallelList2recursiveList(SysVehicleTypeDto parent, List&lt;SysVehicleTypeDto&gt; sysVehicleTypeDtoList) {
+        //&#x7236;&#x8282;&#x70B9;&#x7684;&#x76F4;&#x63A5;&#x5B50;&#x8282;&#x70B9;dto&#x5217;&#x8868;
+        List&lt;SysVehicleTypeDto&gt; children = Lists.newArrayList();
+
+        //&#x9010;&#x7EA7;&#x904D;&#x5386;,&#x4E0D;&#x652F;&#x6301;&#x8DE8;&#x7EA7;&#x9012;&#x5F52;
+        if (CollectionUtils.isEmpty(sysVehicleTypeDtoList)) {
+            return children;
+        }
+
+        //&#x5168;&#x90E8;&#x5B50;&#x8282;&#x70B9;&#x8F66;&#x8F86;&#x7C7B;&#x578B;dto&#x5BF9;&#x8C61;map
+        Multimap&lt;String, SysVehicleTypeDto&gt; allDtoMap = ArrayListMultimap.create();
+
+        //&#x7236;&#x8282;&#x70B9;&#x662F;&#x6839;&#x8282;&#x70B9;&#x8FD8;&#x662F;&#x666E;&#x901A;&#x8282;&#x70B9;
+        String parentLevel = parent.getLevel();
+        if (!parent.getIsRoot()) {
+            parentLevel = LevelTools.calculateLevel(parentLevel, parent.getId());
+        }
+
+        //&#x5C06;&#x5B50;&#x5B59;&#x8282;&#x70B9;&#x7EC4;&#x88C5;&#x5230;&#x6307;&#x5B9A;&#x96C6;&#x5408;
+        for (SysVehicleTypeDto sysVehicleTypeDto : sysVehicleTypeDtoList) {
+            //&#x6309;&#x7167; level &#x5C42;&#x7EA7;&#x533A;&#x5206;&#x5B50;&#x5B59;&#x8282;&#x70B9;
+            allDtoMap.put(sysVehicleTypeDto.getLevel(), sysVehicleTypeDto);
+
+            //&#x7EC4;&#x88C5;&#x7236;&#x8282;&#x70B9;&#x7684;&#x4E00;&#x7EA7;&#x5B50;&#x8282;&#x70B9;
+            if (Objects.equals(parentLevel, sysVehicleTypeDto.getLevel())) {
+                children.add(sysVehicleTypeDto);
+            }
+        }
+
+        //&#x5BF9;&#x4E00;&#x7EA7;&#x5B50;&#x8282;&#x70B9;dto&#x5217;&#x8868;&#x8FDB;&#x884C;&#x6392;&#x5E8F;
+        children.sort(sysVehicleTypeDtoComparator);
+
+        //&#x8F6C;&#x53D8;&#x6210;&#x6811;&#x5F62;&#x7ED3;&#x6784;
+        this.recursive2Tree(children, parentLevel, allDtoMap);
+
+        return children;
+    }
+
+    /**
+     * &#x8C03;&#x6574;&#x53C2;&#x6570;
+     *
+     * @param sysVehicleTypeParam &#x539F;&#x59CB;&#x53C2;&#x6570;
+     */
+    private void adjustParam(SysVehicleTypeParam sysVehicleTypeParam) {
+        //&#x65B0;&#x589E;&#x65F6;,&#x65E0;&#x6240;&#x6709;&#x8005;&#x4EE5;&#x53CA;&#x79DF;&#x6237;&#x4FE1;&#x606F;,&#x5219;&#x81EA;&#x52A8;&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53C2;&#x6570;(&#x6CE8;:&#x6CE8;&#x610F;&#x79DF;&#x6237; tenantId &#x5C5E;&#x6027;)
+        boolean autoInsertFlag = Objects.isNull(sysVehicleTypeParam.getId());
+        if (autoInsertFlag) {
+            //&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;
+            SysUserDto currentUser = ShiroTools.getShiroUser();
+            Preconditions.checkNotNull(currentUser, &quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;);
+
+            Long enterpriseId = currentUser.getOwnerEnterpriseId();
+            String enterpriseName = currentUser.getOwnerEnterpriseName();
+            Long userId = currentUser.getOwnerUserId();
+            String userName = currentUser.getOwnerUserName();
+
+            Long tenantId = currentUser.getTenantId();
+            Integer tenantType = currentUser.getTenantType();
+            String tenantName = currentUser.getTenantName();
+
+            //&#x6240;&#x6709;&#x8005;&#x4FE1;&#x606F;:&#x53EF;&#x80FD;&#x65E0;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x65E0;&#x6743;&#x8BBE;&#x7F6E;),&#x4E5F;&#x53EF;&#x80FD;&#x6709;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x5FFD;&#x7565;&#x8BBE;&#x7F6E;)
+            if (Objects.isNull(sysVehicleTypeParam.getOwnerEnterpriseId())) {
+                sysVehicleTypeParam.setOwnerEnterpriseId(enterpriseId);
+            }
+            if (Objects.isNull(sysVehicleTypeParam.getOwnerEnterpriseName())) {
+                sysVehicleTypeParam.setOwnerEnterpriseName(enterpriseName);
+            }
+            if (Objects.isNull(sysVehicleTypeParam.getOwnerUserId())) {
+                sysVehicleTypeParam.setOwnerUserId(userId);
+            }
+            if (Objects.isNull(sysVehicleTypeParam.getOwnerUserName())) {
+                sysVehicleTypeParam.setOwnerUserName(userName);
+            }
+
+            //&#x79DF;&#x6237; tenantId:&#x65E0;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x65E0;&#x6743;&#x8BBE;&#x7F6E;,&#x4E0D;&#x80FD;&#x8BBE;&#x7F6E;),&#x6709;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x5FFD;&#x7565;&#x8BBE;&#x7F6E;)
+            if (ShiroTools.isAdmin() &amp;&amp; Objects.isNull(sysVehicleTypeParam.getTenantId())) {
+                sysVehicleTypeParam.setTenantId(tenantId);
+            }
+
+            //&#x79DF;&#x6237;&#x4FE1;&#x606F;:&#x53EF;&#x80FD;&#x65E0;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x65E0;&#x6743;&#x8BBE;&#x7F6E;),&#x4E5F;&#x53EF;&#x80FD;&#x6709;&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x8F66;&#x8F86;&#x7C7B;&#x578B;(&#x5FFD;&#x7565;&#x8BBE;&#x7F6E;)
+            if (Objects.isNull(sysVehicleTypeParam.getTenantType())) {
+                sysVehicleTypeParam.setTenantType(tenantType);
+            }
+            if (Objects.isNull(sysVehicleTypeParam.getTenantName())) {
+                sysVehicleTypeParam.setTenantName(tenantName);
+            }
+        }
+    }
+
+    /**
+     * &#x68C0;&#x67E5;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x5DF2;&#x5B58;&#x5728;
+     *
+     * @param parentId &#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B; id
+     * @param id       &#x8F66;&#x8F86;&#x7C7B;&#x578B; id, &#x65B0;&#x589E;&#x65F6;&#x4E3A;&#x7A7A;, &#x4FEE;&#x6539;&#x65F6;&#x975E;&#x7A7A;
+     * @param name     &#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x540D;&#x79F0;
+     * @return &#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x5B58;&#x5728;
+     */
+    private boolean checkExist(Long parentId, Long id, String name) {
+        //&#x65B0;&#x589E;/&#x66F4;&#x65B0;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5DF2;&#x5B58;&#x5728;
+        Wrapper&lt;SysVehicleType&gt; sysVehicleTypeWrapper = new EntityWrapper&lt;&gt;();
+        sysVehicleTypeWrapper.eq(&quot;parent_id&quot;, parentId)
+                .eq(&quot;name&quot;, name);
+        if (Objects.nonNull(id)) {
+            sysVehicleTypeWrapper.ne(&quot;id&quot;, id);
+        }
+
+        return sysVehicleTypeMapper.selectCount(sysVehicleTypeWrapper) &gt; 0;
+    }
+
+    /**
+     * &#x67E5;&#x8BE2;&#x8F66;&#x8F86;&#x7C7B;&#x578B; level &#x503C;
+     *
+     * @param id &#x8F66;&#x8F86;&#x7C7B;&#x578B; id,
+     * @return &#x8F66;&#x8F86;&#x7C7B;&#x578B;level, &#x5B58;&#x5728;&#x8FD4;&#x56DE; level,&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x8FD4;&#x56DE;&quot;&quot;
+     */
+    private String getLevel(Long id) {
+        SysVehicleType sysVehicleType = sysVehicleTypeMapper.selectById(id);
+        if (sysVehicleType == null) {
+            return &quot;&quot;;
+        }
+        return sysVehicleType.getLevel();
+    }
+
+    /**
+     * &#x540C;&#x6B65;&#x65B0;&#x589E;&#x586B;&#x5145;&#x5B57;&#x6BB5;
+     *
+     * @param before &#x540C;&#x6B65;&#x6570;&#x636E;&#x6E90;
+     * @param after  &#x5F85;&#x540C;&#x6B65;&#x6570;&#x636E;
+     */
+    private void syncInsertFillFiled(SysVehicleType before, SysVehicleType after) {
+        //&#x83B7;&#x53D6;&#x65B0;&#x589E;&#x81EA;&#x52A8;&#x586B;&#x5145;&#x5B57;&#x6BB5;
+        Long createEnterpriseId = before.getCreateEnterpriseId();
+        String createEnterpriseName = before.getCreateEnterpriseName();
+        Long createUserId = before.getCreateUserId();
+        String createUserName = before.getCreateUserName();
+        Date gmtCreate = before.getGmtCreate();
+
+        //&#x540C;&#x6B65;&#x66F4;&#x65B0;&#x65B0;&#x589E;&#x81EA;&#x52A8;&#x586B;&#x5145;&#x5B57;&#x6BB5;
+        after.setCreateEnterpriseId(createEnterpriseId);
+        after.setCreateEnterpriseName(createEnterpriseName);
+        after.setCreateUserId(createUserId);
+        after.setCreateUserName(createUserName);
+        after.setGmtCreate(gmtCreate);
+    }
+
+    /**
+     * &#x66F4;&#x65B0;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+     *
+     * @param before &#x66F4;&#x65B0;&#x524D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5BF9;&#x8C61;
+     * @param after  &#x66F4;&#x65B0;&#x540E;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5BF9;&#x8C61;
+     */
+    private void updateDescendant(SysVehicleType before, SysVehicleType after) {
+        //&#x66F4;&#x65B0;&#x524D;&#x540E;&#x8F66;&#x8F86;&#x7C7B;&#x578B;level
+        String beforeLevel = before.getLevel();
+        String afterLevel = after.getLevel();
+
+        //&#x66F4;&#x6539;&#x7236;&#x8282;&#x70B9;,&#x5219;&#x540C;&#x6B65;&#x66F4;&#x65B0;&#x5B50;&#x5B59;&#x8282;&#x70B9; level &#x5197;&#x4F59;&#x5B57;&#x6BB5;
+        if (!Objects.equals(beforeLevel, afterLevel)) {
+            //&#x5904;&#x7406;&#x5F53;&#x524D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x7684;&#x540E;&#x4EE3;
+            SysVehicleTypeDto sysVehicleTypeDto = SysVehicleTypeDto.entityAdaptDto(before);
+            List&lt;SysVehicleType&gt; sysVehicleTypeList = sysVehicleTypeMapper.listDescendant(sysVehicleTypeDto, null);
+
+            //&#x66F4;&#x65B0;&#x5B50;&#x4EE3;&#x7684; level &#x5197;&#x4F59;&#x5B57;&#x6BB5;
+            if (CollectionUtils.isNotEmpty(sysVehicleTypeList)) {
+                for (SysVehicleType sysVehicleType : sysVehicleTypeList) {
+                    String level = sysVehicleType.getLevel();
+
+                    //&#x66F4;&#x65B0;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;level
+                    if (level.startsWith(beforeLevel)) {
+                        //&#x66F4;&#x65B0;&#x6839;&#x8282;&#x70B9;&#x7684;&#x524D;&#x7F00;
+                        level = afterLevel + level.substring(beforeLevel.length());
+                        sysVehicleType.setLevel(level);
+                    }
+
+                    //&#x66F4;&#x65B0;&#x5B50;&#x5B59;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+                    sysVehicleTypeMapper.updateById(sysVehicleType);
+                }
+            }
+        }
+
+        //&#x66F4;&#x65B0;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+        sysVehicleTypeMapper.updateById(after);
+    }
+
+    /**
+     * &#x6839;&#x636E;&#x9009;&#x4E2D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;&#x6765;&#x5904;&#x7406;&#x5B8C;&#x6574;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;
+     *
+     * @param allSysVehicleTypeDtoList      &#x5B8C;&#x6574;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;
+     * @param selectedSysVehicleTypeDtoList &#x9009;&#x4E2D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;
+     * @return &#x5E26;&#x6709;&#x9009;&#x4E2D;&#x72B6;&#x6001;&#x7684;&#x5B8C;&#x6574;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;
+     */
+    private List&lt;SysVehicleTypeDto&gt; handleSelectRoleList(List&lt;SysVehicleTypeDto&gt; allSysVehicleTypeDtoList, List&lt;SysVehicleTypeDto&gt; selectedSysVehicleTypeDtoList) {
+        //&#x5B8C;&#x6574;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868;&#x975E;&#x7A7A;&#x6821;&#x9A8C;
+        if (CollectionUtils.isEmpty(allSysVehicleTypeDtoList)) {
+            return Lists.newArrayList();
+        }
+
+        //&#x5B8C;&#x6574;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868; list &#x8F6C; set
+        Set&lt;Long&gt; allSysVehicleTypeDtoIdSet = allSysVehicleTypeDtoList.stream().map(SysVehicleTypeDto::getId).collect(Collectors.toSet());
+
+        //&#x9009;&#x4E2D;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x5217;&#x8868; list &#x8F6C; set
+        Set&lt;Long&gt; selectedSysVehicleTypeDtoIdSet = selectedSysVehicleTypeDtoList.stream().map(SysVehicleTypeDto::getId).collect(Collectors.toSet());
+
+        //&#x5B8C;&#x6574;&#x6743;&#x9650;&#x4E0E;&#x9009;&#x4E2D;&#x6743;&#x9650;&#x4EA4;&#x96C6;
+        Sets.SetView&lt;Long&gt; selected = Sets.intersection(allSysVehicleTypeDtoIdSet, selectedSysVehicleTypeDtoIdSet);
+
+        //&#x5904;&#x7406;&#x5B8C;&#x6574;&#x6743;&#x9650;&#x5217;&#x8868;
+        for (SysVehicleTypeDto sysVehicleTypeDto : allSysVehicleTypeDtoList) {
+            //&#x9009;&#x4E2D;&#x6743;&#x9650;&#x8282;&#x70B9;
+            if (selected.contains(sysVehicleTypeDto.getId())) {
+                sysVehicleTypeDto.setChecked(true);
+            } else {
+                sysVehicleTypeDto.setChecked(false);
+            }
+            //&#x7236;&#x8282;&#x70B9;&#x5219;&#x5C55;&#x5F00;
+            if (BooleanUtils.toBooleanDefaultIfNull(sysVehicleTypeDto.getIsParent(), false)) {
+                sysVehicleTypeDto.setOpen(true);
+            } else {
+                sysVehicleTypeDto.setOpen(false);
+            }
+        }
+
+        return allSysVehicleTypeDtoList;
+    }
+
+    /**
+     * &#x4EE5;currentList&#x4E3A;&#x57FA;&#x7840;,&#x9012;&#x5F52;&#x6E32;&#x67D3;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x6811;
+     *
+     * @param currentList  &#x6B63;&#x5728;&#x904D;&#x5386;&#x7684;List
+     * @param currentLevel &#x6B63;&#x5728;&#x904D;&#x5386;&#x7684;level
+     * @param allDtoMap    &#x5168;&#x90E8;&#x8282;&#x70B9;map
+     */
+    private void recursive2Tree(List&lt;SysVehicleTypeDto&gt; currentList, String currentLevel, Multimap&lt;String, SysVehicleTypeDto&gt; allDtoMap) {
+        //&#x904D;&#x5386;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5E76;&#x548C;&#x5B50;&#x5B59;&#x8282;&#x70B9;&#x5EFA;&#x7ACB;&#x5173;&#x7CFB;
+        for (SysVehicleTypeDto sysVehicleTypeDto : currentList) {
+            //&#x4E0B;&#x6B21;&#x904D;&#x5386;&#x7684;&#x5C42;&#x7EA7;level
+            String childrenLevel = LevelTools.calculateLevel(currentLevel, sysVehicleTypeDto.getId());
+
+            //&#x4E0B;&#x6B21;&#x904D;&#x5386;&#x7684;dtoList
+            List&lt;SysVehicleTypeDto&gt; children = (List&lt;SysVehicleTypeDto&gt;) allDtoMap.get(childrenLevel);
+
+            //&#x4E0D;&#x652F;&#x6301;&#x8DE8;&#x7EA7;&#x9012;&#x5F52;
+            if (CollectionUtils.isNotEmpty(children)) {
+                //&#x5BF9;&#x4E0B;&#x6B21;&#x904D;&#x5386;&#x7684;list&#x6392;&#x5E8F;
+                children.sort(sysVehicleTypeDtoComparator);
+
+                //&#x5C06;&#x4E0B;&#x6B21;&#x904D;&#x5386;&#x7684;list&#x4F5C;&#x4E3A;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;children
+                sysVehicleTypeDto.setChildren(children);
+
+                //&#x7EE7;&#x7EED;&#x8FED;&#x4EE3;
+                recursive2Tree(children, childrenLevel, allDtoMap);
+            }
+        }
+    }
+
+    /**
+     * &#x8F66;&#x8F86;&#x7C7B;&#x578B;dto &#x6BD4;&#x8F83;&#x5668;
+     */
+    private Comparator&lt;SysVehicleTypeDto&gt; sysVehicleTypeDtoComparator = Comparator.comparingInt(SysVehicleType::getNum);
+
+}
+</code></pre><footer class="page-footer"><span class="copyright">Copyright &#xA9; snowdreams1006 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2018-08-08 01:20:22
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="service.html" class="navigation navigation-prev " aria-label="Previous page: service">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="serviceImplTest.html" class="navigation navigation-next " aria-label="Next page: serviceImplTest">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"serviceImpl","level":"1.3.1.11","depth":3,"next":{"title":"serviceImplTest","level":"1.3.1.12","depth":3,"path":"docs/practice/normal/serviceImplTest.md","ref":"docs/practice/normal/serviceImplTest.md","articles":[]},"previous":{"title":"service","level":"1.3.1.10","depth":3,"path":"docs/practice/normal/service.md","ref":"docs/practice/normal/service.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://zhangjikai.com/resource/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://zhangjikai.com/resource/weixin.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/practice/normal/serviceImpl.md","mtime":"2018-08-07T17:20:22.718Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T17:22:37.489Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-book-summary-scroll-position-saver/book-summary-scroll-position-saver.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-terminal/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
