@@ -3,6 +3,7 @@
 测试目的在于检验 `mybaits-plus` 通用 `sql` 是否可用,以及自定义 `sql` 是否正常运行,因此只测试正常请求时表现如何,基本规则如下:
 
 - `mapperTest` 继承统一基类 `BaseTest` ,可根据实际情况决定是否重写某些方法;
+- 类名：`大驼峰命名+MapperTest` 规范,默认注释同数据表注释,并加上`@FixMethodOrder`等注解说明;
 - 测试方法名: `test+(大写字母)+(方法名)+SuccessWith+(条件)`;
 
 

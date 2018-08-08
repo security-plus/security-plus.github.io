@@ -15,7 +15,7 @@
 
 sys_vehicle_type
 
-```mysql
+```sql
 CREATE TABLE `sys_vehicle_type` (
   `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '车辆类型id',
   `parent_id` bigint(11) unsigned NOT NULL DEFAULT '0' COMMENT '直接上级id,0表示无上级',

@@ -85,4 +85,3 @@ public class SysVehicleTypeParam extends BaseParam {
 
 [sysVehicleTypeParam-split]: ../../../static/image/sysVehicleTypeParam-split.png "sysVehicleTypeParam-split"
 [sysVehicleTypeParam]: ../../../static/image/sysVehicleTypeParam.png "sysVehicleTypeParam"
-[sysVehicleTypeQuery-split]: ../../../static/image/ "sysVehicleTypeQuery-split.png"

@@ -1125,8 +1125,1341 @@
                                 <section class="normal markdown-section">
                                 
                                 <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#serviceimpltest"><b>1. </b>serviceImplTest</a></li></ul></div><a href="#serviceimpltest" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="serviceimpltest"><a name="serviceimpltest" class="anchor-navigation-ex-anchor" href="#serviceimpltest"><i class="fa fa-link" aria-hidden="true"></i></a>1. serviceImplTest</h1>
+<p>&#x57FA;&#x672C;&#x89C4;&#x5219;&#x5982;&#x4E0B;:</p>
+<ul>
+<li><code>serviceImplTest</code> &#x7EE7;&#x627F;&#x7EDF;&#x4E00;&#x57FA;&#x7C7B; <code>BaseTest</code> ,&#x53EF;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x91CD;&#x5199;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;;</li>
+<li>&#x7C7B;&#x540D;&#xFF1A;<code>&#x5927;&#x9A7C;&#x5CF0;&#x547D;&#x540D;+ServiceImplTest</code> &#x89C4;&#x8303;,&#x9ED8;&#x8BA4;&#x6CE8;&#x91CA;&#x540C;&#x6570;&#x636E;&#x8868;&#x6CE8;&#x91CA;,&#x5E76;&#x52A0;&#x4E0A;<code>@FixMethodOrder</code>&#x7B49;&#x6CE8;&#x89E3;&#x8BF4;&#x660E;;</li>
+<li>&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x540D;: <code>test+(&#x5927;&#x5199;&#x5B57;&#x6BCD;)+(&#x65B9;&#x6CD5;&#x540D;)+SuccessWith+(&#x6761;&#x4EF6;)</code> &#x6216;&#x8005; <code>test+(&#x5927;&#x5199;&#x5B57;&#x6BCD;)+(&#x65B9;&#x6CD5;&#x540D;)+FailureBecauseof+(&#x539F;&#x56E0;)</code>;</li>
+</ul>
+<ol>
+<li><p>&#x627E;&#x5230; <code>SysRoleServiceImplTest</code> &#x89D2;&#x8272; <code>serviceImplTest</code> &#x6D4B;&#x8BD5;&#x7C7B;,&#x5E76;&#x590D;&#x5236;&#x91CD;&#x547D;&#x540D;&#x4E3A; <code>SysVehicleTypeServiceImplTest</code>,&#x540C;&#x65F6;&#x6253;&#x5F00;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;,&#x65B9;&#x4FBF;&#x7F16;&#x8F91;;
+<img src="../../../static/image/sysVehicleTypeServiceImplTest-split-1.png" alt="sysVehicleTypeServiceImplTest-split-1" title="sysVehicleTypeServiceImplTest-split-1">
+<img src="../../../static/image/sysVehicleTypeServiceImplTest-split-2.png" alt="sysVehicleTypeServiceImplTest-split-2" title="sysVehicleTypeServiceImplTest-split-2">
+<img src="../../../static/image/sysVehicleTypeServiceImplTest-split-3.png" alt="sysVehicleTypeServiceImplTest-split-3" title="sysVehicleTypeServiceImplTest-split-3"></p>
+</li>
+<li><p>&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;,&#x7F16;&#x5199; <code>SysVehicleTypeServiceImplTest</code> &#x6587;&#x4EF6;;
+<img src="../../../static/image/sysVehicleTypeServiceImplTest.png" alt="sysVehicleTypeServiceImplTest" title="sysVehicleTypeServiceImplTest"></p>
+</li>
+</ol>
+<p>SysVehicleTypeServiceImplTest</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.snowdreams1006.securityplus.browser.module.system.service.impl;
+
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.plugins.Page;
+<span class="hljs-keyword">import</span> com.google.common.base.Preconditions;
+<span class="hljs-keyword">import</span> com.google.common.collect.Lists;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.BaseTest;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.enums.BaseStateEnum;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.enums.RoleSourceEnum;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.enums.RoleTypeEnum;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.enums.VehicleTypeEnum;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.tools.LevelTools;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.tools.PageTools;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.tools.ShiroTools;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.base.tools.StringTools;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.module.system.dto.SysUserDto;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.module.system.dto.SysVehicleTypeDto;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.module.system.param.SysVehicleTypeParam;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.module.system.query.SysVehicleTypeQuery;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.browser.module.system.service.ISysVehicleTypeService;
+<span class="hljs-keyword">import</span> com.snowdreams1006.securityplus.core.tools.JacksonTools;
+<span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;
+<span class="hljs-keyword">import</span> org.apache.commons.lang3.time.DateUtils;
+<span class="hljs-keyword">import</span> org.junit.FixMethodOrder;
+<span class="hljs-keyword">import</span> org.junit.Test;
+<span class="hljs-keyword">import</span> org.junit.runners.MethodSorters;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+
+<span class="hljs-keyword">import</span> javax.validation.ValidationException;
+<span class="hljs-keyword">import</span> java.text.ParseException;
+<span class="hljs-keyword">import</span> java.util.Date;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Objects;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> org.hamcrest.MatcherAssert.assertThat;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> org.hamcrest.Matchers.*;
+
+<span class="hljs-comment">/**
+ * &#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&#x8868; ServiceImpl&#x6D4B;&#x8BD5;
+ *
+ * <span class="hljs-doctag">@author</span> snowdreams1006
+ * <span class="hljs-doctag">@date</span> 2018-05-26
+ */</span>
+<span class="hljs-meta">@Slf</span>4j
+<span class="hljs-meta">@FixMethodOrder</span>(MethodSorters.NAME_ASCENDING)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SysVehicleTypeServiceImplTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseTest</span> </span>{
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> ISysVehicleTypeService sysVehicleTypeService;
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeSuccessWithId</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L</span>
+        SysVehicleTypeQuery descendantQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        descendantQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(descendantQuery);
+
+        assertThat(parent, notNullValue());
+        assertThat(parent.getId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getParentId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getLevel(), equalTo(LevelTools.ROOT_LEVEL));
+        assertThat(parent.getName(), equalTo(LevelTools.ROOT_NAME));
+        assertThat(parent.getIsRoot(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getIsParent(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getChildren(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(parent));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeSuccessWithIdAndDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,gmtCreate=[2018-06-04,2018-07-04]</span>
+        SysVehicleTypeQuery descendantQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        descendantQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        descendantQuery.setStartDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+        descendantQuery.setEndDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(descendantQuery);
+
+        assertThat(parent, notNullValue());
+        assertThat(parent.getId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getParentId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getLevel(), equalTo(LevelTools.ROOT_LEVEL));
+        assertThat(parent.getName(), equalTo(LevelTools.ROOT_NAME));
+        assertThat(parent.getIsRoot(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getIsParent(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getChildren(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;gmtCreate&quot;</span>, allOf(greaterThanOrEqualTo(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>)), lessThanOrEqualTo(DateUtils.addDays(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>), <span class="hljs-number">1</span>))))));
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(parent));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeSuccessWithIdAndType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,type=[1]</span>
+        List&lt;Integer&gt; type = Lists.newArrayList();
+        type.add(RoleTypeEnum.ENTERPRISE.getValue());
+
+        SysVehicleTypeQuery descendantQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        descendantQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        descendantQuery.setType(type);
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(descendantQuery);
+
+        assertThat(parent, notNullValue());
+        assertThat(parent.getId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getParentId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getLevel(), equalTo(LevelTools.ROOT_LEVEL));
+        assertThat(parent.getName(), equalTo(LevelTools.ROOT_NAME));
+        assertThat(parent.getIsRoot(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getIsParent(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getChildren(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;type&quot;</span>, isIn(type))));
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(parent));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeSuccessWithNullCondition</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(<span class="hljs-keyword">null</span>);
+
+        assertThat(parent, notNullValue());
+        assertThat(parent.getId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getParentId(), equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)));
+        assertThat(parent.getLevel(), equalTo(LevelTools.ROOT_LEVEL));
+        assertThat(parent.getName(), equalTo(LevelTools.ROOT_NAME));
+        assertThat(parent.getIsRoot(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getIsParent(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(parent.getChildren(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(parent.getChildren(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(parent));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeFailureBecauseofNullParent</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=Long.MAX_VALUE</span>
+        SysVehicleTypeQuery descendantQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        descendantQuery.setId(Long.MAX_VALUE);
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(descendantQuery);
+
+        assertThat(parent, nullValue());
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: null&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAGetSyncTreeFailureBecauseofNullChildren</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=93L</span>
+        SysVehicleTypeQuery descendantQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        descendantQuery.setId(<span class="hljs-number">93L</span>);
+
+        <span class="hljs-comment">//&#x540C;&#x6B65;&#x67E5;&#x8BE2;</span>
+        SysVehicleTypeDto parent = sysVehicleTypeService.getSyncTree(descendantQuery);
+
+        assertThat(parent, notNullValue());
+        assertThat(parent.getId(), equalTo(<span class="hljs-number">93L</span>));
+        assertThat(parent.getParentId(), equalTo(<span class="hljs-number">1L</span>));
+        assertThat(parent.getLevel(), equalTo(<span class="hljs-string">&quot;0.1&quot;</span>));
+        assertThat(parent.getName(), equalTo(<span class="hljs-string">&quot;&#x8F7B;&#x578B;&#x666E;&#x901A;&#x534A;&#x6302;&#x8F66;&quot;</span>));
+        assertThat(parent.getState(), not(BaseStateEnum.DELETED.getValue()));
+        assertThat(parent.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(parent.getIsParent(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(parent.getChildren(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: {}&quot;</span>, JacksonTools.object2Json(parent));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListASyncTreeSuccessWithId</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L</span>
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(childrenQuery);
+
+        assertThat(children, notNullValue());
+        assertThat(children, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(childrenQuery.getId().toString()))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(children));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListASyncTreeSuccessWithIdAndDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,gmtCreate=[2018-06-04,2018-07-04]</span>
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        childrenQuery.setStartDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+        childrenQuery.setEndDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(childrenQuery);
+
+        assertThat(children, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(childrenQuery.getId().toString()))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;gmtCreate&quot;</span>, allOf(greaterThanOrEqualTo(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>)), lessThanOrEqualTo(DateUtils.addDays(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>), <span class="hljs-number">1</span>))))));
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(children));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListASyncTreeSuccessWithIdAndType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,type=[1]</span>
+        List&lt;Integer&gt; type = Lists.newArrayList();
+        type.add(RoleTypeEnum.ENTERPRISE.getValue());
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        childrenQuery.setType(type);
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(childrenQuery);
+
+        assertThat(children, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(childrenQuery.getId().toString()))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;type&quot;</span>, isIn(type))));
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(children));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListASyncTreeSuccessWithNullCondition</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(<span class="hljs-keyword">null</span>);
+
+        assertThat(children, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(children, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(children));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListAsyncTreeFailureBecauseofNullParent</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=Long.MAX_VALUE</span>
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.MAX_VALUE);
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(childrenQuery);
+
+        assertThat(children, nullValue());
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: null&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBListASyncTreeFailureBecauseofNullChildren</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=93L</span>
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(<span class="hljs-number">93L</span>);
+
+        <span class="hljs-comment">//&#x5F02;&#x6B65;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; children = sysVehicleTypeService.listAsyncTree(childrenQuery);
+
+        assertThat(children, notNullValue());
+        assertThat(children, emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: {}&quot;</span>, JacksonTools.object2Json(children));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageSuccessWithId</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L</span>
+        Page&lt;SysVehicleTypeDto&gt; page = <span class="hljs-keyword">new</span> Page&lt;&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;num&quot;</span>, <span class="hljs-keyword">true</span>);
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        page = sysVehicleTypeService.listPage(page, childrenQuery);
+
+        assertThat(page, notNullValue());
+        assertThat(page.getCurrent(), equalTo(<span class="hljs-number">1</span>));
+        assertThat(page.getSize(), equalTo(<span class="hljs-number">3</span>));
+        assertThat(page.getPages(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getTotal(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getRecords(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(page.getRecords(), hasSize(lessThanOrEqualTo(<span class="hljs-number">3</span>)));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(childrenQuery.getId()))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(LevelTools.ROOT_LEVEL))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(page));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageSuccessWithIdAndDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,gmtCreate=[2018-06-04,2018-07-04]</span>
+        Page&lt;SysVehicleTypeDto&gt; page = <span class="hljs-keyword">new</span> Page&lt;&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;num&quot;</span>, <span class="hljs-keyword">true</span>);
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        childrenQuery.setStartDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+        childrenQuery.setEndDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        page = sysVehicleTypeService.listPage(page, childrenQuery);
+
+        assertThat(page, notNullValue());
+        assertThat(page.getCurrent(), equalTo(<span class="hljs-number">1</span>));
+        assertThat(page.getSize(), equalTo(<span class="hljs-number">3</span>));
+        assertThat(page.getPages(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getTotal(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getRecords(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(page.getRecords(), hasSize(lessThanOrEqualTo(<span class="hljs-number">3</span>)));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(childrenQuery.getId()))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(LevelTools.ROOT_LEVEL))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;gmtCreate&quot;</span>, allOf(greaterThanOrEqualTo(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>)), lessThanOrEqualTo(DateUtils.addDays(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>), <span class="hljs-number">1</span>))))));
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(page));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageSuccessWithIdAndType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=0L,type=[1]</span>
+        Page&lt;SysVehicleTypeDto&gt; page = <span class="hljs-keyword">new</span> Page&lt;&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;num&quot;</span>, <span class="hljs-keyword">true</span>);
+
+        List&lt;Integer&gt; type = Lists.newArrayList();
+        type.add(RoleTypeEnum.ENTERPRISE.getValue());
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.valueOf(LevelTools.ROOT_LEVEL));
+        childrenQuery.setType(type);
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        page = sysVehicleTypeService.listPage(page, childrenQuery);
+
+        assertThat(page, notNullValue());
+        assertThat(page.getCurrent(), equalTo(<span class="hljs-number">1</span>));
+        assertThat(page.getSize(), equalTo(<span class="hljs-number">3</span>));
+        assertThat(page.getPages(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getTotal(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getRecords(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(page.getRecords(), hasSize(lessThanOrEqualTo(<span class="hljs-number">3</span>)));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, containsString(LevelTools.ROOT_LEVEL))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;type&quot;</span>, isIn(type))));
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(page));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageSuccessWithNullCondition</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        Page&lt;SysVehicleTypeDto&gt; page = sysVehicleTypeService.listPage(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+
+        assertThat(page, notNullValue());
+        assertThat(page.getCurrent(), equalTo(PageTools.DEFAULT_PAGE_CURRENT));
+        assertThat(page.getSize(), equalTo(PageTools.DEFAULT_PAGE_SIZE));
+        assertThat(page.getPages(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getTotal(), greaterThanOrEqualTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getRecords(), hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(page.getRecords(), hasSize(lessThanOrEqualTo(PageTools.DEFAULT_PAGE_SIZE)));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;parentId&quot;</span>, equalTo(Long.valueOf(LevelTools.ROOT_LEVEL)))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;level&quot;</span>, equalTo(LevelTools.ROOT_LEVEL))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(page.getRecords(), everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(page));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageFailureBecauseofNullParent</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=Long.MAX_VALUE</span>
+        Page&lt;SysVehicleTypeDto&gt; page = <span class="hljs-keyword">new</span> Page&lt;&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;num&quot;</span>, <span class="hljs-keyword">true</span>);
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(Long.MAX_VALUE);
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        page = sysVehicleTypeService.listPage(page, childrenQuery);
+
+        assertThat(page, nullValue());
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: null&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCListPageFailureBecauseofNullChildren</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=93L</span>
+        Page&lt;SysVehicleTypeDto&gt; page = <span class="hljs-keyword">new</span> Page&lt;&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;num&quot;</span>, <span class="hljs-keyword">true</span>);
+
+        SysVehicleTypeQuery childrenQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        childrenQuery.setId(<span class="hljs-number">93L</span>);
+
+        <span class="hljs-comment">//&#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+        page = sysVehicleTypeService.listPage(page, childrenQuery);
+
+        assertThat(page, notNullValue());
+        assertThat(page.getCurrent(), equalTo(<span class="hljs-number">1</span>));
+        assertThat(page.getSize(), equalTo(<span class="hljs-number">3</span>));
+        assertThat(page.getPages(), equalTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getTotal(), equalTo(<span class="hljs-number">0L</span>));
+        assertThat(page.getRecords(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: {}&quot;</span>, JacksonTools.object2Json(page));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDListConditionSuccessWithName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: name=&#x534A;&#x6302;&#x8F66;</span>
+        SysVehicleTypeQuery sysVehicleTypeQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        sysVehicleTypeQuery.setName(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>);
+
+        <span class="hljs-comment">//&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; results = sysVehicleTypeService.listCondition(sysVehicleTypeQuery);
+
+        assertThat(results, notNullValue());
+        assertThat(results, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;name&quot;</span>, containsString(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(results));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDListConditionSuccessWithNameAndDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: name=&#x534A;&#x6302;&#x8F66;,gmtCreate=[2018-06-04,2018-07-04]</span>
+        SysVehicleTypeQuery sysVehicleTypeQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        sysVehicleTypeQuery.setName(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>);
+        sysVehicleTypeQuery.setStartDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+        sysVehicleTypeQuery.setEndDate(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>));
+
+        <span class="hljs-comment">//&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; results = sysVehicleTypeService.listCondition(sysVehicleTypeQuery);
+
+        assertThat(results, notNullValue());
+        assertThat(results, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;name&quot;</span>, containsString(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;gmtCreate&quot;</span>, allOf(greaterThanOrEqualTo(DateUtils.parseDate(<span class="hljs-string">&quot;2018-06-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>)), lessThanOrEqualTo(DateUtils.addDays(DateUtils.parseDate(<span class="hljs-string">&quot;2018-07-04&quot;</span>, <span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>), <span class="hljs-number">1</span>))))));
+
+        log.info(<span class="hljs-string">&quot;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(results));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDListConditionSuccessWithNameAndType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: name=&#x534A;&#x6302;&#x8F66;,type=[1]</span>
+        List&lt;Integer&gt; type = Lists.newArrayList();
+        type.add(RoleTypeEnum.ENTERPRISE.getValue());
+
+        SysVehicleTypeQuery sysVehicleTypeQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        sysVehicleTypeQuery.setName(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>);
+        sysVehicleTypeQuery.setType(type);
+
+        <span class="hljs-comment">//&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; results = sysVehicleTypeService.listCondition(sysVehicleTypeQuery);
+
+        assertThat(results, notNullValue());
+        assertThat(results, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;name&quot;</span>, containsString(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;type&quot;</span>, isIn(type))));
+
+        log.info(<span class="hljs-string">&quot;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(results));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDListConditionSuccessWithNullCondition</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; results = sysVehicleTypeService.listCondition(<span class="hljs-keyword">null</span>);
+
+        assertThat(results, notNullValue());
+        assertThat(results, hasSize(greaterThanOrEqualTo(<span class="hljs-number">0</span>)));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;state&quot;</span>, not(BaseStateEnum.DELETED.getValue()))));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantId&quot;</span>, equalTo(tenantId))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantType&quot;</span>, equalTo(tenantType))));
+            assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;tenantName&quot;</span>, equalTo(tenantName))));
+        }
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;isRoot&quot;</span>, equalTo(<span class="hljs-keyword">false</span>))));
+        assertThat(results, everyItem(hasProperty(<span class="hljs-string">&quot;children&quot;</span>, emptyCollectionOf(SysVehicleTypeDto.class))));
+
+        log.info(<span class="hljs-string">&quot;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(results));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDListConditionFailureBecauseofNullResult</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x6761;&#x4EF6;: id=Long.MAX_VALUE</span>
+        SysVehicleTypeQuery sysVehicleTypeQuery = <span class="hljs-keyword">new</span> SysVehicleTypeQuery();
+        sysVehicleTypeQuery.setId(Long.MAX_VALUE);
+
+        <span class="hljs-comment">//&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+        List&lt;SysVehicleTypeDto&gt; results = sysVehicleTypeService.listCondition(sysVehicleTypeQuery);
+
+        assertThat(results, notNullValue());
+        assertThat(results, emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: {}&quot;</span>, JacksonTools.object2Json(results));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testEGetOneSuccess</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x7CBE;&#x786E;&#x67E5;&#x8BE2;: id=1L</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.getOne(<span class="hljs-number">1L</span>);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), equalTo(<span class="hljs-number">1L</span>));
+        assertThat(sysVehicleTypeDto.getState(), not(BaseStateEnum.DELETED.getValue()));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(sysVehicleTypeDto.getTenantId(), equalTo(tenantId));
+            assertThat(sysVehicleTypeDto.getTenantType(), equalTo(tenantType));
+            assertThat(sysVehicleTypeDto.getTenantName(), equalTo(tenantName));
+        }
+        assertThat(sysVehicleTypeDto.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+
+        log.info(<span class="hljs-string">&quot;&#x7CBE;&#x786E;&#x67E5;&#x8BE2;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testEGetOneFailureBecauseofNullCondition</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x7CBE;&#x786E;&#x67E5;&#x8BE2;: id=null</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.getOne(<span class="hljs-keyword">null</span>);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (NullPointerException e) {
+            assertThat(e.getMessage(), equalTo(<span class="hljs-string">&quot;&#x5F85;&#x67E5;&#x8BE2;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[null]&#x4E0D;&#x5B58;&#x5728;&quot;</span>));
+
+            log.info(<span class="hljs-string">&quot;&#x7CBE;&#x786E;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testEGetOneFailureBecauseofNullResult</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x7CBE;&#x786E;&#x67E5;&#x8BE2;: id=Long.MAX_VALUE</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.getOne(Long.MAX_VALUE);
+
+        assertThat(sysVehicleTypeDto, nullValue());
+
+        log.info(<span class="hljs-string">&quot;&#x7CBE;&#x786E;&#x67E5;&#x8BE2;&#x5931;&#x8D25;: null&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFAddOneSuccessWithFullArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long enterpriseId = currentUser.getOwnerEnterpriseId();
+        String enterpriseName = currentUser.getOwnerEnterpriseName();
+        Long userId = currentUser.getOwnerUserId();
+        String userName = currentUser.getOwnerUserName();
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        Integer source = ShiroTools.isAdmin() ? RoleSourceEnum.SYSTEM_ROLE.getValue() : RoleSourceEnum.NORMAL_ROLE.getValue();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x65B0;&#x589E;&#x5B8C;&#x6574;&#x53C2;&#x6570;</span>
+        SysVehicleTypeParam sysVehicleTypeParam = SysVehicleTypeParam.builder()
+                .parentId(Long.valueOf(LevelTools.ROOT_LEVEL))
+                .num(Integer.MAX_VALUE)
+                .type(VehicleTypeEnum.SEMITRAILER.getValue())
+                .name(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;&quot;</span>)
+                .build();
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;:&#x5B8C;&#x6574;&#x53C2;&#x6570;&quot;</span>);
+        sysVehicleTypeParam.setState(BaseStateEnum.OK.getValue());
+
+        sysVehicleTypeParam.setOwnerEnterpriseId(enterpriseId);
+        sysVehicleTypeParam.setOwnerEnterpriseName(enterpriseName);
+        sysVehicleTypeParam.setOwnerUserId(userId);
+        sysVehicleTypeParam.setOwnerUserName(userName);
+
+        <span class="hljs-comment">//&#x79DF;&#x6237;&#x8FC7;&#x6EE4;&#x53EF;&#x80FD;&#x4F1A;&#x91CD;&#x590D;&#x6DFB;&#x52A0;:&#x53D6;&#x51B3;&#x4E8E;&#x662F;&#x5426;&#x5B58;&#x5728;&#x79DF;&#x6237;&#x7EA6;&#x675F;</span>
+        <span class="hljs-keyword">if</span> (ShiroTools.isAdmin()) {
+            sysVehicleTypeParam.setTenantId(tenantId);
+        }
+        sysVehicleTypeParam.setTenantType(tenantType);
+        sysVehicleTypeParam.setTenantName(tenantName);
+
+        <span class="hljs-comment">//&#x65B0;&#x589E;</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.addOne(sysVehicleTypeParam);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), notNullValue());
+        assertThat(sysVehicleTypeDto.getParentId(), equalTo(sysVehicleTypeParam.getParentId()));
+        assertThat(sysVehicleTypeDto.getLevel(), containsString(sysVehicleTypeParam.getParentId().toString()));
+        assertThat(sysVehicleTypeDto.getNum(), equalTo(sysVehicleTypeParam.getNum()));
+        assertThat(sysVehicleTypeDto.getType(), equalTo(sysVehicleTypeParam.getType()));
+        assertThat(sysVehicleTypeDto.getName(), equalTo(sysVehicleTypeParam.getName()));
+        assertThat(sysVehicleTypeDto.getRemark(), equalTo(sysVehicleTypeParam.getRemark()));
+        assertThat(sysVehicleTypeDto.getState(), equalTo(sysVehicleTypeParam.getState()));
+        assertThat(sysVehicleTypeDto.getOwnerEnterpriseId(), equalTo(sysVehicleTypeParam.getOwnerEnterpriseId()));
+        assertThat(sysVehicleTypeDto.getOwnerEnterpriseName(), equalTo(sysVehicleTypeParam.getOwnerEnterpriseName()));
+        assertThat(sysVehicleTypeDto.getOwnerUserId(), equalTo(sysVehicleTypeParam.getOwnerUserId()));
+        assertThat(sysVehicleTypeDto.getOwnerUserName(), equalTo(sysVehicleTypeParam.getOwnerUserName()));
+        assertThat(sysVehicleTypeDto.getCreateEnterpriseId(), equalTo(currentUser.getOwnerEnterpriseId()));
+        assertThat(sysVehicleTypeDto.getCreateEnterpriseName(), equalTo(currentUser.getOwnerEnterpriseName()));
+        assertThat(sysVehicleTypeDto.getModifiedEnterpriseId(), equalTo(currentUser.getOwnerEnterpriseId()));
+        assertThat(sysVehicleTypeDto.getModifiedEnterpriseName(), equalTo(currentUser.getOwnerEnterpriseName()));
+        assertThat(sysVehicleTypeDto.getCreateUserId(), equalTo(currentUser.getOwnerUserId()));
+        assertThat(sysVehicleTypeDto.getCreateUserName(), equalTo(currentUser.getOwnerUserName()));
+        assertThat(sysVehicleTypeDto.getModifiedUserId(), equalTo(currentUser.getOwnerUserId()));
+        assertThat(sysVehicleTypeDto.getModifiedUserName(), equalTo(currentUser.getOwnerUserName()));
+        assertThat(sysVehicleTypeDto.getTenantId(), equalTo(sysVehicleTypeParam.getTenantId()));
+        assertThat(sysVehicleTypeDto.getTenantType(), equalTo(sysVehicleTypeParam.getTenantType()));
+        assertThat(sysVehicleTypeDto.getTenantName(), equalTo(sysVehicleTypeParam.getTenantName()));
+        assertThat(sysVehicleTypeDto.getGmtCreate(), notNullValue());
+        assertThat(sysVehicleTypeDto.getGmtModified(), notNullValue());
+        assertThat(sysVehicleTypeDto.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getIsParent(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getChildren(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFAddOneSuccessWithRequiredArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long enterpriseId = currentUser.getOwnerEnterpriseId();
+        String enterpriseName = currentUser.getOwnerEnterpriseName();
+        Long userId = currentUser.getOwnerUserId();
+        String userName = currentUser.getOwnerUserName();
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        Integer source = ShiroTools.isAdmin() ? RoleSourceEnum.SYSTEM_ROLE.getValue() : RoleSourceEnum.NORMAL_ROLE.getValue();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x65B0;&#x589E;&#x5FC5;&#x987B;&#x53C2;&#x6570;</span>
+        SysVehicleTypeParam sysVehicleTypeParam = SysVehicleTypeParam.builder()
+                .parentId(Long.valueOf(LevelTools.ROOT_LEVEL))
+                .num(Integer.MAX_VALUE)
+                .type(VehicleTypeEnum.SEMITRAILER.getValue())
+                .name(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;&quot;</span>)
+                .build();
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;:&#x5FC5;&#x987B;&#x53C2;&#x6570;&quot;</span>);
+        sysVehicleTypeParam.setState(BaseStateEnum.OK.getValue());
+
+        <span class="hljs-comment">//&#x65B0;&#x589E;</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.addOne(sysVehicleTypeParam);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), notNullValue());
+        assertThat(sysVehicleTypeDto.getParentId(), equalTo(sysVehicleTypeParam.getParentId()));
+        assertThat(sysVehicleTypeDto.getLevel(), containsString(sysVehicleTypeParam.getParentId().toString()));
+        assertThat(sysVehicleTypeDto.getNum(), equalTo(sysVehicleTypeParam.getNum()));
+        assertThat(sysVehicleTypeDto.getType(), equalTo(sysVehicleTypeParam.getType()));
+        assertThat(sysVehicleTypeDto.getName(), equalTo(sysVehicleTypeParam.getName()));
+        assertThat(sysVehicleTypeDto.getRemark(), equalTo(sysVehicleTypeParam.getRemark()));
+        assertThat(sysVehicleTypeDto.getState(), equalTo(sysVehicleTypeParam.getState()));
+        assertThat(sysVehicleTypeDto.getOwnerEnterpriseId(), equalTo(enterpriseId));
+        assertThat(sysVehicleTypeDto.getOwnerEnterpriseName(), equalTo(enterpriseName));
+        assertThat(sysVehicleTypeDto.getOwnerUserId(), equalTo(userId));
+        assertThat(sysVehicleTypeDto.getOwnerUserName(), equalTo(userName));
+        assertThat(sysVehicleTypeDto.getCreateEnterpriseId(), equalTo(currentUser.getOwnerEnterpriseId()));
+        assertThat(sysVehicleTypeDto.getCreateEnterpriseName(), equalTo(currentUser.getOwnerEnterpriseName()));
+        assertThat(sysVehicleTypeDto.getModifiedEnterpriseId(), equalTo(currentUser.getOwnerEnterpriseId()));
+        assertThat(sysVehicleTypeDto.getModifiedEnterpriseName(), equalTo(currentUser.getOwnerEnterpriseName()));
+        assertThat(sysVehicleTypeDto.getCreateUserId(), equalTo(currentUser.getOwnerUserId()));
+        assertThat(sysVehicleTypeDto.getCreateUserName(), equalTo(currentUser.getOwnerUserName()));
+        assertThat(sysVehicleTypeDto.getModifiedUserId(), equalTo(currentUser.getOwnerUserId()));
+        assertThat(sysVehicleTypeDto.getModifiedUserName(), equalTo(currentUser.getOwnerUserName()));
+        assertThat(sysVehicleTypeDto.getTenantId(), equalTo(tenantId));
+        assertThat(sysVehicleTypeDto.getTenantType(), equalTo(tenantType));
+        assertThat(sysVehicleTypeDto.getTenantName(), equalTo(tenantName));
+        assertThat(sysVehicleTypeDto.getGmtCreate(), notNullValue());
+        assertThat(sysVehicleTypeDto.getGmtModified(), notNullValue());
+        assertThat(sysVehicleTypeDto.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getIsParent(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getChildren(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFAddOneFailureBecauseofInvalidArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x65B0;&#x589E;&#x65E0;&#x6548;&#x53C2;&#x6570;</span>
+        SysVehicleTypeParam sysVehicleTypeParam = SysVehicleTypeParam.builder()
+<span class="hljs-comment">//                .parentId(Long.valueOf(LevelTools.ROOT_LEVEL))</span>
+                .num(Integer.MAX_VALUE)
+                .type(VehicleTypeEnum.SEMITRAILER.getValue())
+                .name(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x5931;&#x8D25;&quot;</span>)
+                .build();
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x5931;&#x8D25;:&#x65E0;&#x6548;&#x53C2;&#x6570;&quot;</span>);
+        sysVehicleTypeParam.setState(BaseStateEnum.OK.getValue());
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x65B0;&#x589E;</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.addOne(sysVehicleTypeParam);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (ValidationException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(<span class="hljs-string">&quot;parentId=&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id&#x4E0D;&#x5B58;&#x5728;&quot;</span>));
+
+            log.info(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFAddOneFailureBecauseofIllegalArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x65B0;&#x589E;&#x975E;&#x6CD5;&#x53C2;&#x6570;</span>
+        SysVehicleTypeParam sysVehicleTypeParam = SysVehicleTypeParam.builder()
+                .parentId(Long.valueOf(LevelTools.ROOT_LEVEL))
+                .num(Integer.MAX_VALUE)
+                .type(VehicleTypeEnum.SEMITRAILER.getValue())
+                .name(<span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>)
+                .build();
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x5931;&#x8D25;:&#x975E;&#x6CD5;&#x53C2;&#x6570;&quot;</span>);
+        sysVehicleTypeParam.setState(BaseStateEnum.OK.getValue());
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x65B0;&#x589E;</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.addOne(sysVehicleTypeParam);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (IllegalArgumentException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(String.format(<span class="hljs-string">&quot;&#x540C;&#x4E00;&#x5C42;&#x7EA7;&#x4E0B;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5DF2;&#x5B58;&#x5728;&quot;</span>, <span class="hljs-string">&quot;&#x534A;&#x6302;&#x8F66;&quot;</span>)));
+
+            log.info(<span class="hljs-string">&quot;&#x65B0;&#x589E;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGUpdateOneSuccessWithAlone</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto prepare = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam sysVehicleTypeParam = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptParam(prepare));
+        sysVehicleTypeParam.setNum(<span class="hljs-number">1</span>);
+        sysVehicleTypeParam.setName(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;</span>);
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;:&#x5355;&#x72EC;&#x66F4;&#x65B0;&quot;</span>);
+
+        <span class="hljs-comment">//&#x66F4;&#x65B0;</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.updateOne(sysVehicleTypeParam);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), equalTo(sysVehicleTypeParam.getId()));
+        assertThat(sysVehicleTypeDto.getNum(), equalTo(sysVehicleTypeParam.getNum()));
+        assertThat(sysVehicleTypeDto.getName(), equalTo(sysVehicleTypeParam.getName()));
+        assertThat(sysVehicleTypeDto.getRemark(), equalTo(sysVehicleTypeParam.getRemark()));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(sysVehicleTypeDto.getTenantId(), equalTo(tenantId));
+            assertThat(sysVehicleTypeDto.getTenantType(), equalTo(tenantType));
+            assertThat(sysVehicleTypeDto.getTenantName(), equalTo(tenantName));
+        }
+        assertThat(sysVehicleTypeDto.getGmtModified(), greaterThanOrEqualTo(DateUtils.addSeconds(<span class="hljs-keyword">new</span> Date(), -<span class="hljs-number">10</span>)));
+        assertThat(sysVehicleTypeDto.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getIsParent(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getChildren(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGUpdateOneSuccessWithDescendant</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        SysUserDto currentUser = ShiroTools.getShiroUser();
+        Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+        Long tenantId = currentUser.getTenantId();
+        Integer tenantType = currentUser.getTenantType();
+        String tenantName = currentUser.getTenantName();
+
+        log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto parentDto = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam childParam = SysVehicleTypeParam.builder()
+                .parentId(parentDto.getId())
+                .num(<span class="hljs-number">1</span>)
+                .type(parentDto.getType())
+                .name(parentDto.getName() + <span class="hljs-string">&quot;:&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;</span>)
+                .build();
+
+        childParam.setRemark(parentDto.getRemark() + <span class="hljs-string">&quot;:&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;</span>);
+        childParam.setState(parentDto.getState());
+
+        prepareTestData(childParam);
+
+        SysVehicleTypeParam sysVehicleTypeParam = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptParam(parentDto));
+        sysVehicleTypeParam.setNum(<span class="hljs-number">1</span>);
+        sysVehicleTypeParam.setName(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;</span>);
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;:&#x540E;&#x4EE3;&#x66F4;&#x65B0;&quot;</span>);
+
+        <span class="hljs-comment">//&#x66F4;&#x65B0;</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.updateOne(sysVehicleTypeParam);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), equalTo(sysVehicleTypeParam.getId()));
+        assertThat(sysVehicleTypeDto.getNum(), equalTo(sysVehicleTypeParam.getNum()));
+        assertThat(sysVehicleTypeDto.getName(), equalTo(sysVehicleTypeParam.getName()));
+        assertThat(sysVehicleTypeDto.getRemark(), equalTo(sysVehicleTypeParam.getRemark()));
+        <span class="hljs-keyword">if</span> (!ShiroTools.isAdmin()) {
+            assertThat(sysVehicleTypeDto.getTenantId(), equalTo(tenantId));
+            assertThat(sysVehicleTypeDto.getTenantType(), equalTo(tenantType));
+            assertThat(sysVehicleTypeDto.getTenantName(), equalTo(tenantName));
+        }
+        assertThat(sysVehicleTypeDto.getGmtModified(), greaterThanOrEqualTo(DateUtils.addSeconds(<span class="hljs-keyword">new</span> Date(), -<span class="hljs-number">10</span>)));
+        assertThat(sysVehicleTypeDto.getIsRoot(), equalTo(<span class="hljs-keyword">false</span>));
+        assertThat(sysVehicleTypeDto.getIsParent(), equalTo(<span class="hljs-keyword">true</span>));
+        assertThat(sysVehicleTypeDto.getChildren(), emptyCollectionOf(SysVehicleTypeDto.class));
+
+        log.info(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGUpdateOneFailureBecauseofInvalidArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto prepare = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam sysVehicleTypeParam = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptParam(prepare));
+
+        sysVehicleTypeParam.setNum(<span class="hljs-number">1</span>);
+        sysVehicleTypeParam.setName(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;&quot;</span>);
+        sysVehicleTypeParam.setParentId(<span class="hljs-keyword">null</span>);
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;:&#x65E0;&#x6548;&#x53C2;&#x6570;&quot;</span>);
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x66F4;&#x65B0;</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.updateOne(sysVehicleTypeParam);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (ValidationException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(<span class="hljs-string">&quot;parentId=&#x4E0A;&#x7EA7;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id&#x4E0D;&#x5B58;&#x5728;&quot;</span>));
+
+            log.info(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGUpdateOneFailureBecauseofIllegalArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto prepare = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeDto repeat = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam sysVehicleTypeParam = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptParam(prepare));
+        sysVehicleTypeParam.setNum(<span class="hljs-number">1</span>);
+        sysVehicleTypeParam.setName(repeat.getName());
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;:&#x975E;&#x6CD5;&#x53C2;&#x6570;&quot;</span>);
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x66F4;&#x65B0;</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.updateOne(sysVehicleTypeParam);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (IllegalArgumentException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(String.format(<span class="hljs-string">&quot;&#x540C;&#x4E00;&#x5C42;&#x7EA7;&#x4E0B;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5DF2;&#x5B58;&#x5728;&quot;</span>, sysVehicleTypeParam.getName())));
+
+            log.info(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGUpdateOneFailureBecauseofNullIdArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto prepare = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam sysVehicleTypeParam = Preconditions.checkNotNull(SysVehicleTypeDto.dtoAdaptParam(prepare));
+        sysVehicleTypeParam.setNum(<span class="hljs-number">1</span>);
+        sysVehicleTypeParam.setName(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;&quot;</span>);
+        sysVehicleTypeParam.setId(<span class="hljs-keyword">null</span>);
+
+        sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;:&#x4E3B;&#x952E;&#x7F3A;&#x5931;&quot;</span>);
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x66F4;&#x65B0;</span>
+            SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.updateOne(sysVehicleTypeParam);
+
+            assertThat(sysVehicleTypeDto, nullValue());
+        } <span class="hljs-keyword">catch</span> (NullPointerException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(String.format(<span class="hljs-string">&quot;&#x5F85;&#x66F4;&#x65B0;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[%s]&#x4E0D;&#x5B58;&#x5728;&quot;</span>, sysVehicleTypeParam.getName())));
+
+            log.info(<span class="hljs-string">&quot;&#x66F4;&#x65B0;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testHDeleteOneSuccess</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto prepare = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        <span class="hljs-comment">//&#x5220;&#x9664;</span>
+        sysVehicleTypeService.deleteOne(prepare.getId());
+
+        log.info(<span class="hljs-string">&quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testHDeleteOneFailureBecauseofInvalidlArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x5220;&#x9664;</span>
+            sysVehicleTypeService.deleteOne(Long.MAX_VALUE);
+
+            assertThat(<span class="hljs-string">&quot;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x4F60;&#x770B;&#x4E0D;&#x5230;&#x6211;,&#x5426;&#x5219;&#x65AD;&#x8A00;&#x5931;&#x8D25;&quot;</span>, <span class="hljs-keyword">true</span>, equalTo(<span class="hljs-keyword">false</span>));
+        } <span class="hljs-keyword">catch</span> (NullPointerException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(String.format(<span class="hljs-string">&quot;&#x5F85;&#x5220;&#x9664;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;id[%s]&#x4E0D;&#x5B58;&#x5728;&quot;</span>, Long.MAX_VALUE)));
+
+            log.info(<span class="hljs-string">&quot;&#x5220;&#x9664;&#x5931;&#x8D25;: {}&quot;</span>, e);
+        }
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testHDeleteOneFailureBecauseofIllegalArgs</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        SysVehicleTypeDto parentDto = prepareTestData(<span class="hljs-keyword">null</span>);
+
+        SysVehicleTypeParam childParam = SysVehicleTypeParam.builder()
+                .parentId(parentDto.getId())
+                .num(<span class="hljs-number">1</span>)
+                .type(parentDto.getType())
+                .name(parentDto.getName() + <span class="hljs-string">&quot;:&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;</span>)
+                .build();
+
+        childParam.setRemark(parentDto.getRemark() + <span class="hljs-string">&quot;:&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;</span>);
+        childParam.setState(parentDto.getState());
+
+        prepareTestData(childParam);
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x5220;&#x9664;</span>
+            sysVehicleTypeService.deleteOne(parentDto.getId());
+
+            assertThat(<span class="hljs-string">&quot;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x4F60;&#x770B;&#x4E0D;&#x5230;&#x6211;,&#x5426;&#x5219;&#x65AD;&#x8A00;&#x5931;&#x8D25;&quot;</span>, <span class="hljs-keyword">true</span>, equalTo(<span class="hljs-keyword">false</span>));
+        } <span class="hljs-keyword">catch</span> (IllegalArgumentException e) {
+            assertThat(e.getMessage(), notNullValue());
+            assertThat(e.getMessage(), equalTo(String.format(<span class="hljs-string">&quot;&#x5F85;&#x5220;&#x9664;&#x7684;&#x8F66;&#x8F86;&#x7C7B;&#x578B;[%s]&#x5B58;&#x5728;&#x5B50;&#x8F66;&#x8F86;&#x7C7B;&#x578B;&quot;</span>, parentDto.getName())));
+
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * &#x51C6;&#x5907;&#x6D4B;&#x8BD5;&#x6570;&#x636E;
+     *
+     * <span class="hljs-doctag">@return</span> &#x65B0;&#x589E;&#x5355;&#x4E2A;&#x8F66;&#x8F86;&#x7C7B;&#x578B;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> SysVehicleTypeDto <span class="hljs-title">prepareTestData</span><span class="hljs-params">(SysVehicleTypeParam sysVehicleTypeParam)</span> </span>{
+        <span class="hljs-comment">//&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+        <span class="hljs-keyword">if</span> (Objects.isNull(sysVehicleTypeParam)) {
+            <span class="hljs-comment">//&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+            SysUserDto currentUser = ShiroTools.getShiroUser();
+            Preconditions.checkNotNull(currentUser, <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x4E0D;&#x5B58;&#x5728;&quot;</span>);
+
+            Long enterpriseId = currentUser.getOwnerEnterpriseId();
+            String enterpriseName = currentUser.getOwnerEnterpriseName();
+            Long userId = currentUser.getOwnerUserId();
+            String userName = currentUser.getOwnerUserName();
+
+            Long tenantId = currentUser.getTenantId();
+            Integer tenantType = currentUser.getTenantType();
+            String tenantName = currentUser.getTenantName();
+
+            log.info(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;: {}&quot;</span>, JacksonTools.object2Json(currentUser));
+
+            <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x6D4B;&#x8BD5;&#x6570;&#x636E;</span>
+            sysVehicleTypeParam = SysVehicleTypeParam.builder()
+                    .parentId(Long.valueOf(LevelTools.ROOT_LEVEL))
+                    .num(Integer.MAX_VALUE)
+                    .type(VehicleTypeEnum.SEMITRAILER.getValue())
+                    .name(<span class="hljs-string">&quot;&#x6D4B;&#x8BD5;&#x6570;&#x636E;:&quot;</span> + StringTools.getRandomString(<span class="hljs-number">6</span>))
+                    .build();
+
+            sysVehicleTypeParam.setRemark(<span class="hljs-string">&quot;&#x6D4B;&#x8BD5;&#x6570;&#x636E;:&quot;</span> + StringTools.getRandomString(<span class="hljs-number">6</span>));
+            sysVehicleTypeParam.setState(BaseStateEnum.OK.getValue());
+
+            sysVehicleTypeParam.setOwnerEnterpriseId(enterpriseId);
+            sysVehicleTypeParam.setOwnerEnterpriseName(enterpriseName);
+            sysVehicleTypeParam.setOwnerUserId(userId);
+            sysVehicleTypeParam.setOwnerUserName(userName);
+
+            <span class="hljs-comment">//&#x79DF;&#x6237;&#x8FC7;&#x6EE4;&#x53EF;&#x80FD;&#x4F1A;&#x91CD;&#x590D;&#x6DFB;&#x52A0;:&#x53D6;&#x51B3;&#x4E8E;&#x662F;&#x5426;&#x5B58;&#x5728;&#x79DF;&#x6237;&#x7EA6;&#x675F;</span>
+            <span class="hljs-keyword">if</span> (ShiroTools.isAdmin()) {
+                sysVehicleTypeParam.setTenantId(tenantId);
+            }
+            sysVehicleTypeParam.setTenantType(tenantType);
+            sysVehicleTypeParam.setTenantName(tenantName);
+        }
+
+        <span class="hljs-comment">//&#x65B0;&#x589E;</span>
+        SysVehicleTypeDto sysVehicleTypeDto = sysVehicleTypeService.addOne(sysVehicleTypeParam);
+
+        assertThat(sysVehicleTypeDto, notNullValue());
+        assertThat(sysVehicleTypeDto.getId(), notNullValue());
+
+        log.info(<span class="hljs-string">&quot;&#x6D4B;&#x8BD5;&#x6570;&#x636E;: {}&quot;</span>, JacksonTools.object2Json(sysVehicleTypeDto));
+
+        <span class="hljs-keyword">return</span> sysVehicleTypeDto;
+    }
+
+}
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; snowdreams1006 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2018-08-08 01:00:21
+2018-08-08 09:11:49
 </span></footer>
                                 
                                 </section>
@@ -1170,7 +2503,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"serviceImplTest","level":"1.3.1.12","depth":3,"next":{"title":"controller","level":"1.3.1.13","depth":3,"path":"docs/practice/normal/controller.md","ref":"docs/practice/normal/controller.md","articles":[]},"previous":{"title":"serviceImpl","level":"1.3.1.11","depth":3,"path":"docs/practice/normal/serviceImpl.md","ref":"docs/practice/normal/serviceImpl.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://zhangjikai.com/resource/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://zhangjikai.com/resource/weixin.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/practice/normal/serviceImplTest.md","mtime":"2018-08-07T17:00:21.365Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T17:22:37.489Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"serviceImplTest","level":"1.3.1.12","depth":3,"next":{"title":"controller","level":"1.3.1.13","depth":3,"path":"docs/practice/normal/controller.md","ref":"docs/practice/normal/controller.md","articles":[]},"previous":{"title":"serviceImpl","level":"1.3.1.11","depth":3,"path":"docs/practice/normal/serviceImpl.md","ref":"docs/practice/normal/serviceImpl.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://zhangjikai.com/resource/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://zhangjikai.com/resource/weixin.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/practice/normal/serviceImplTest.md","mtime":"2018-08-08T01:11:49.002Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-08T02:33:29.962Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

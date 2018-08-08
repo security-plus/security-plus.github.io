@@ -1,5 +1,7 @@
 # serviceImpl
 
+基本规则如下:
+
 - `serviceImpl` 继承统一基类 `ServiceImpl` ,可根据实际情况决定是否重写某些方法;
 - 类名：`I+(大驼峰命名)+Service` 规范,默认注释同数据表注释,并加上`@Service`等注解说明;
 - 方法名: 接口的实现类对外暴露的方法 `public`,否则 `private`,尽量不要 `protected`;
