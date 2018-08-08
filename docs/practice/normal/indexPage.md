@@ -24,7 +24,7 @@
 
 vehicleType
 
-```html
+```
 <!DOCTYPE html>
 <html>
 <head>
