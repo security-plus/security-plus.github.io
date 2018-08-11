@@ -87,8 +87,8 @@
     },
     "expandable-chapters-small": {},
     "donate": {
-      "wechat": "https://github.com/security-plus/security-plus.github.io/tree/master/static/image/wechat.jpg",
-      "alipay": "https://github.com/security-plus/security-plus.github.io/tree/master/static/image/alipay.jpg",
+      "wechat": "https://github.com/security-plus/security-plus.github.io/tree/blob/master/static/image/wechat.jpg",
+      "alipay": "https://github.com/security-plus/security-plus.github.io/tree/blob/master/static/image/alipay.jpg",
       "title": "捐赠",
       "button": "赏",
       "alipayText": "支付宝打赏",
