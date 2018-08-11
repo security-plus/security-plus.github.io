@@ -150,9 +150,9 @@ security-plus 雪之梦后台权限管理系统
 [zui56]: https://www.zui56.net "zui56"
 [qq-513238368]: http://wpa.qq.com/msgrd?v=3&uin=513238368&site=qq&menu=yes "qq-513238368"
 [preview]: ./static/image/preview.png "preview"
-[wechat]: ./static/image/weixin.png "wechat"
-[alipay]: ./static/image/alipay.png "alipay"
-[wechat-alipay]: ./static/image/wechat-alipay.png "wechat-alipay"
+[wechat]: ./static/image/wechat.jpg "wechat"
+[alipay]: ./static/image/alipay.jpg "alipay"
+[wechat-alipay]: ./static/image/wechat-alipay.jpg "wechat-alipay"
 
 
 
