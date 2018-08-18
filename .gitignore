@@ -1,3 +1,7 @@
+# for Mac OS X System Files
+.DS_Store
+Thumbs.db
+
 # Optional npm cache directory
 .npm
 
