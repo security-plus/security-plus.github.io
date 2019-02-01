@@ -1,6 +1,6 @@
 # security-plus 简介 | Introduce
 
-`security-plus`（简称SP）是基于 [spring-boot][spring-boot] 搭建的一套后台管理系统,关注安全,敏捷开发.
+`security-plus`（简称SP）框架是专门为`java`后台管理系统而诞生的完整系统,初见倾心,再见动情!
 
 > **[success] 目标和愿景 ** 
 > 
