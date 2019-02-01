@@ -1,4 +1,4 @@
-# security-plus 简介 | Introduce
+# 简介 | Introduce
 
 `security-plus`（简称SP）框架是专门为`java`后台管理系统而诞生的完整系统,初见倾心,再见动情!
 
@@ -135,7 +135,6 @@ security-plus 雪之梦后台权限管理系统
 - 开发文档: [security-plus][security-plus],欢迎志同道合小伙伴加入;
 
 > 欢迎各路好汉一起来参与完善 `security-plus`，我们期待你的PR！
-
 
 [security-plus]: https://github.com/security-plus "security-plus"
 [security-plus-issues]: https://github.com/security-plus/security-plus.github.io/issues "security-plus-issues"

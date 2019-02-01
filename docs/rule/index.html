@@ -1125,8 +1125,97 @@
                                 <section class="normal markdown-section">
                                 
                                 <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x5F00;&#x53D1;&#x89C4;&#x8303;"><b>1. </b>&#x5F00;&#x53D1;&#x89C4;&#x8303;</a></li></ul></div><a href="#&#x5F00;&#x53D1;&#x89C4;&#x8303;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x5F00;&#x53D1;&#x89C4;&#x8303;"><a name="&#x5F00;&#x53D1;&#x89C4;&#x8303;" class="anchor-navigation-ex-anchor" href="#&#x5F00;&#x53D1;&#x89C4;&#x8303;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x5F00;&#x53D1;&#x89C4;&#x8303;</h1>
+<p>!&gt; &#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x5DF2;&#x5B58;&#x5728;&#x4E00;&#x5F20; User &#x8868;&#xFF0C;&#x4E14;&#x5DF2;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x4F53;&#x7C7B; User&#xFF0C;&#x5B9E;&#x73B0; User &#x8868;&#x7684; CRUD &#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x505A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<p>?&gt; AR &#x6A21;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x66F4;&#x52A0;&#x4FBF;&#x6377;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0; CRUD &#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x672C;&#x8D28;&#x8FD8;&#x662F;&#x8C03;&#x7528;&#x7684; Mybatis &#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;</p>
+<p>1.&#x521B;&#x5EFA;&#x4F01;&#x4E1A;&#x662F;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x8005;-&#x7528;&#x6237;</p>
+<p>2.&#x5DF2;&#x521B;&#x5EFA;&#x7684;&#x4F01;&#x4E1A;&#x8D1F;&#x8D23;&#x4EBA;&#x6240;&#x6709;&#x8005;&#x4FE1;&#x606F;&#x4E0D;&#x5BF9;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">mybatis-plus:</span>
+    <span class="hljs-comment"># &#x5982;&#x679C;&#x662F;&#x653E;&#x5728;src/main/java&#x76EE;&#x5F55;&#x4E0B; classpath:/com/yourpackage/*/mapper/*Mapper.xml</span>
+    <span class="hljs-comment"># &#x5982;&#x679C;&#x662F;&#x653E;&#x5728;resource&#x76EE;&#x5F55; classpath:/mapper/*Mapper.xml</span>
+<span class="hljs-attr">    mapper-locations:</span> classpath:/mapper/*Mapper.xml
+    <span class="hljs-comment">#&#x5B9E;&#x4F53;&#x626B;&#x63CF;&#xFF0C;&#x591A;&#x4E2A;package&#x7528;&#x9017;&#x53F7;&#x6216;&#x8005;&#x5206;&#x53F7;&#x5206;&#x9694;</span>
+<span class="hljs-attr">    typeAliasesPackage:</span> com.yourpackage.*.entity
+<span class="hljs-attr">    global-config:</span>
+      <span class="hljs-comment">#&#x4E3B;&#x952E;&#x7C7B;&#x578B;  0:&quot;&#x6570;&#x636E;&#x5E93;ID&#x81EA;&#x589E;&quot;, 1:&quot;&#x7528;&#x6237;&#x8F93;&#x5165;ID&quot;,2:&quot;&#x5168;&#x5C40;&#x552F;&#x4E00;ID (&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x552F;&#x4E00;ID)&quot;, 3:&quot;&#x5168;&#x5C40;&#x552F;&#x4E00;ID UUID&quot;;</span>
+<span class="hljs-attr">      id-type:</span> <span class="hljs-number">3</span>
+      <span class="hljs-comment">#&#x5B57;&#x6BB5;&#x7B56;&#x7565; 0:&quot;&#x5FFD;&#x7565;&#x5224;&#x65AD;&quot;,1:&quot;&#x975E; NULL &#x5224;&#x65AD;&quot;),2:&quot;&#x975E;&#x7A7A;&#x5224;&#x65AD;&quot;</span>
+<span class="hljs-attr">      field-strategy:</span> <span class="hljs-number">2</span>
+      <span class="hljs-comment">#&#x9A7C;&#x5CF0;&#x4E0B;&#x5212;&#x7EBF;&#x8F6C;&#x6362;</span>
+<span class="hljs-attr">      db-column-underline:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-comment">#mp2.3+ &#x5168;&#x5C40;&#x8868;&#x524D;&#x7F00; mp_</span>
+      <span class="hljs-comment">#table-prefix: mp_</span>
+      <span class="hljs-comment">#&#x5237;&#x65B0;mapper &#x8C03;&#x8BD5;&#x795E;&#x5668;</span>
+      <span class="hljs-comment">#refresh-mapper: true</span>
+      <span class="hljs-comment">#&#x6570;&#x636E;&#x5E93;&#x5927;&#x5199;&#x4E0B;&#x5212;&#x7EBF;&#x8F6C;&#x6362;</span>
+      <span class="hljs-comment">#capital-mode: true</span>
+      <span class="hljs-comment"># Sequence&#x5E8F;&#x5217;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;&#x914D;&#x7F6E;</span>
+<span class="hljs-attr">      key-generator:</span> com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+      <span class="hljs-comment">#&#x903B;&#x8F91;&#x5220;&#x9664;&#x914D;&#x7F6E;&#xFF08;&#x4E0B;&#x9762;3&#x4E2A;&#x914D;&#x7F6E;&#xFF09;</span>
+<span class="hljs-attr">      logic-delete-value:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">      logic-not-delete-value:</span> <span class="hljs-number">0</span>
+<span class="hljs-attr">      sql-injector:</span> com.baomidou.mybatisplus.mapper.LogicSqlInjector
+      <span class="hljs-comment">#&#x81EA;&#x5B9A;&#x4E49;&#x586B;&#x5145;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;</span>
+<span class="hljs-attr">      meta-object-handler:</span> com.baomidou.springboot.MyMetaObjectHandler
+<span class="hljs-attr">    configuration:</span>
+      <span class="hljs-comment">#&#x914D;&#x7F6E;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5E93;(column&#x4E0B;&#x5212;&#x7EBF;&#x547D;&#x540D;&amp;&amp;&#x8FD4;&#x56DE;java&#x5B9E;&#x4F53;&#x662F;&#x9A7C;&#x5CF0;&#x547D;&#x540D;)&#xFF0C;&#x81EA;&#x52A8;&#x5339;&#x914D;&#x65E0;&#x9700;as&#xFF08;&#x6CA1;&#x5F00;&#x542F;&#x8FD9;&#x4E2A;&#xFF0C;SQL&#x9700;&#x8981;&#x5199;as&#xFF1A; select user_id as userId&#xFF09; </span>
+<span class="hljs-attr">      map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      cache-enabled:</span> <span class="hljs-literal">false</span>
+      <span class="hljs-comment">#&#x914D;&#x7F6E;JdbcTypeForNull, oracle&#x6570;&#x636E;&#x5E93;&#x5FC5;&#x987B;&#x914D;&#x7F6E;</span>
+<span class="hljs-attr">      jdbc-type-for-null:</span> <span class="hljs-string">&apos;null&apos;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>&#x503C;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IdType.AUTO</td>
+<td>&#x6570;&#x636E;&#x5E93;ID&#x81EA;&#x589E;</td>
+</tr>
+<tr>
+<td>IdType.INPUT</td>
+<td>&#x7528;&#x6237;&#x8F93;&#x5165;ID</td>
+</tr>
+<tr>
+<td>IdType.ID_WORKER</td>
+<td>&#x5168;&#x5C40;&#x552F;&#x4E00;ID&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#x7A7A;&#x81EA;&#x52A8;&#x586B;&#x5145;&#xFF08;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF09;</td>
+</tr>
+<tr>
+<td>IdType.UUID</td>
+<td>&#x5168;&#x5C40;&#x552F;&#x4E00;ID&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#x7A7A;&#x81EA;&#x52A8;&#x586B;&#x5145;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4F01;&#x4E1A;&#x4FE1;&#x606F;:</p>
+<p>&quot;&#x4F01;&#x4E1A;&#x8D1F;&#x8D23;&#x4EBA;&quot;&#x89D2;&#x8272;&#x9ED8;&#x8BA4;&#x4E3A;&#x4F01;&#x4E1A;&#x7D27;&#x6025;&#x8054;&#x7CFB;&#x4EBA;,&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4F01;&#x4E1A;&#x8D1F;&#x8D23;&#x4EBA;,&#x8D26;&#x53F7;&#x662F;&#x7D27;&#x6025;&#x8054;&#x7CFB;&#x4EBA;&#x624B;&#x673A;&#x53F7;;</p>
+<p>&#x89D2;&#x8272;&#x4FE1;&#x606F;:</p>
+<p>&quot;&#x7BA1;&#x7406;&#x5458;&quot;&#x89D2;&#x8272;&#x89C4;&#x5219;:&#x4EE5;&quot;admin_&quot;&#x5F00;&#x5934;,&#x4F8B;&#x5982;&#x8D85;&#x7EA7;&#x5E73;&#x53F0;&#x65B9;: admin_super_platform</p>
+<p>&#x5F00;&#x53D1;&#x8005;&#x5E73;&#x53F0;&#x65B9;: admin_platform_developer</p>
+<p>&#x63A5;&#x53E3;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_api</p>
+<p>&#x5F00;&#x53D1;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_develop</p>
+<p>&#x57FA;&#x7840;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_base</p>
+<p>&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_system</p>
+<p>&#x7CFB;&#x7EDF;&#x57FA;&#x7840;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_system_base</p>
+<p>&#x7CFB;&#x7EDF;&#x9AD8;&#x7EA7;&#x7BA1;&#x7406;&#x5458;: admin_platform_developer_system_advance</p>
+<p>&#x6D59;&#x6C5F;&#x7701;&#x5E73;&#x53F0;&#x65B9;: admin_platform_zhejiang</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x5E73;&#x53F0;&#x65B9;: admin_platform_zhejiang_ningbo</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x5371;&#x5316;&#x54C1;&#x5E73;&#x53F0;: admin_platform_zhejiang_ningbo_whp</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x5371;&#x5316;&#x54C1;&#x627F;&#x8FD0;&#x65B9;: zhejiang_ningbo_whp_carrier</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x5371;&#x5316;&#x54C1;&#x8D27;&#x4E3B;: zhejiang_ningbo_whp_consignor</p>
+<p>...</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x96C6;&#x5361;&#x5E73;&#x53F0;: admin_platform_zhejiang_ningbo_jk</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x8D27;&#x4EE3;&#x7BA1;&#x7406;&#x5458;: zhejiang_ningbo_jk_hd</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x8D27;&#x4EE3;&#x64CD;&#x4F5C;: zhejiang_ningbo_jk_forwarder_operator</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x8D27;&#x4EE3;&#x8C03;&#x5EA6;: zhejiang_ningbo_jk_forwarder_scheduling</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x8F66;&#x961F;&#x7BA1;&#x7406;&#x5458;: zhejiang_ningbo_jk_motorcade</p>
+<p>&#x5B81;&#x6CE2;&#x5E02;&#x8F66;&#x961F;&#x53F8;&#x673A;: zhejiang_ningbo_jk_motorcade_driver</p>
+<p>...</p>
+<p>&#x4F01;&#x4E1A;&#x5185;&#x90E8;&#x89D2;&#x8272;&#x4E0D;&#x53D7;&#x6B64;&#x89C4;&#x5219;&#x663E;&#x793A;,&#x7531;&#x4F01;&#x4E1A;&#x5185;&#x90E8;&#x5458;&#x5DE5;&#x81EA;&#x5B9A;&#x4E49;,&#x6BCF;&#x4E2A;&#x4F01;&#x4E1A;&#x53EA;&#x6709;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x8D1F;&#x8D23;&#x4EBA;,&#x62E5;&#x6709;&#x4F01;&#x4E1A;&#x6700;&#x9AD8;&#x6743;&#x9650;;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; snowdreams1006 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2018-08-06 21:21:51
+2018-08-17 15:38:40
 </span></footer>
                                 
                                 </section>
@@ -1170,7 +1259,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"开发规范","level":"1.4","depth":1,"next":{"title":"模块规范","level":"1.4.1","depth":2,"path":"docs/rule/module.md","ref":"docs/rule/module.md","articles":[]},"previous":{"title":"敏捷开发","level":"1.3.2","depth":2,"path":"docs/practice/smart.md","ref":"docs/practice/smart.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://security-plus.github.io/static/image/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://security-plus.github.io/static/image/wechat.jpg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/rule/README.md","mtime":"2018-08-06T13:21:51.389Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-11T10:19:40.150Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"开发规范","level":"1.4","depth":1,"next":{"title":"模块规范","level":"1.4.1","depth":2,"path":"docs/rule/module.md","ref":"docs/rule/module.md","articles":[]},"previous":{"title":"敏捷开发","level":"1.3.2","depth":2,"path":"docs/practice/smart.md","ref":"docs/practice/smart.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","-sharing","sharing-plus","editlink","expandable-chapters-small","splitter","github","github-buttons","alerts","anchor-navigation-ex","book-summary-scroll-position-saver","copy-code-button","donate","mermaid-gb3","puml","tbfed-pagefooter","terminal","versions-select","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy snowdreams1006 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/security-plus/security-plus.github.io"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/security-plus/security-plus.github.io/blob/master/"},"puml":{},"livereload":{},"book-summary-scroll-position-saver":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"versions-select":{"type":"branches"},"donate":{"alipay":"https://security-plus.github.io/static/image/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"捐赠","wechat":"https://security-plus.github.io/static/image/wechat.jpg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":true},"alerts":{},"github-buttons":{"buttons":[{"user":"security-plus","repo":"security-plus.github.io","type":"star","size":"large"},{"user":"security-plus","type":"follow","width":"230","count":false}]},"expandable-chapters-small":{},"copy-code-button":{},"versions":{"options":[{"value":"https://github.com/security-plus/security-plus.github.io","text":"v1.0.0"}]},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"terminal":{"copyButtons":true,"fade":false,"style":"flat"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"security-plus","language":"zh-hans","gitbook":"*","description":"security-plus 使用手册"},"file":{"path":"docs/rule/README.md","mtime":"2018-08-17T07:38:40.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-01T15:53:56.188Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1238,6 +1327,10 @@
     
         
         <script src="../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
